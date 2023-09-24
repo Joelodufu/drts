@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="eng">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/flaticon.css" />
+    <link rel="stylesheet" href="assets/css/remixicon.css" />
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="assets/css/odometer.css" />
+    <link rel="stylesheet" href="assets/css/fancybox.css" />
+    <link rel="stylesheet" href="assets/css/aos.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/dark-theme.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
+    <title>DRTS HOME</title>
+    <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+  </head>
+  <body>
+    <div class="loader js-preloader">
+      <svg
+        class="car"
+        width="102"
+        height="40"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g
+          transform="translate(2 1)"
+          stroke="#091851"
+          fill="none"
+          fill-rule="evenodd"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            class="car__body"
+            d="M47.293 2.375C52.927.792 54.017.805 54.017.805c2.613-.445 6.838-.337 9.42.237l8.381 1.863c2.59.576 6.164 2.606 7.98 4.531l6.348 6.732 6.245 1.877c3.098.508 5.609 3.431 5.609 6.507v4.206c0 .29-2.536 4.189-5.687 4.189H36.808c-2.655 0-4.34-2.1-3.688-4.67 0 0 3.71-19.944 14.173-23.902zM36.5 15.5h54.01"
+            stroke-width="2"
+          />
+          <ellipse
+            class="car__wheel--left"
+            stroke-width="2.2"
+            fill="#FFF"
+            cx="83.493"
+            cy="30.25"
+            rx="6.922"
+            ry="6.808"
+          />
+          <ellipse
+            class="car__wheel--right"
+            stroke-width="2.2"
+            fill="#FFF"
+            cx="46.511"
+            cy="30.25"
+            rx="6.922"
+            ry="6.808"
+          />
+          <path
+            class="car__line car__line--top"
+            d="M22.5 16.5H2.475"
+            stroke-width="2"
+          />
+          <path
+            class="car__line car__line--middle"
+            d="M20.5 23.5H.4755"
+            stroke-width="2"
+          />
+          <path
+            class="car__line car__line--bottom"
+            d="M25.5 9.5h-19"
+            stroke-width="2"
+          />
+        </g>
+      </svg>
+    </div>
+
+    <div class="switch-theme-mode">
+      <label id="switch" class="switch">
+        <input type="checkbox" onchange="toggleTheme()" id="slider" />
+        <span class="slider round"></span>
+      </label>
+    </div>
+
+    <div class="page-wrapper">
+      <header class="header-wrap style1">
+        <div class="header-top">
+          <button type="button" class="close-sidebar">
+            <i class="ri-close-fill"></i>
+          </button>
+          <div class="container">
+            
+          </div>
+        </div>
+        <div class="container">
+          <div class="header-bottom">
+            <nav class="navbar navbar-expand-md navbar-light">
+              <a class="navbar-brand" href="index.html">
+                <img src="assets/img/logo.png" alt="logo" />
+              </a>
+              <div
+                class="collapse navbar-collapse main-menu-wrap"
+                id="navbarSupportedContent"
+              >
+                <div class="menu-close xl-none">
+                  <a href="javascript:void(0)">
+                    <i class="ri-close-line"></i
+                  ></a>
+                </div>
+                <ul class="navbar-nav ms-auto">
+                  <li class="nav-item has-dropdown">
+                    <a href="#" class="nav-link active">
+                      Home
+                      <i class="ri-arrow-down-s-fill"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li class="nav-item">
+                        <a href="index.html" class="nav-link active"
+                          >Home</a
+                        >
+                      </li>
+                      <li class="nav-item">
+                        <a href="" class="nav-link">My Dashboard</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a href="index.html#aboutus" class="nav-link"> About Us </a>
+                  </li>
+                  
+                  
+                 
+                  <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact Us</a>
+                  </li>
+                  <li class="nav-item xl-none">
+                    <a href="login.html" class="btn style1">Get Licensed</a>
+                  </li>
+                </ul>
+                <div class="others-options lg-none">
+                  
+                  <div class="header-btn">
+                    <a href="login.html" class="btn style1">Get Licensed</a>
+                  </div>
+                </div>
+              </div>
+            </nav>
+            <div class="mobile-bar-wrap">
+        
+              <div class="mobile-menu xl-none">
+                <a href="javascript:void(0)"><i class="ri-menu-line"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="search-area">
+            <div class="container">
+              <form action="#">
+                <div class="form-group">
+                  <input type="search" placeholder="Search Here" autofocus />
+                </div>
+              </form>
+              <button type="button" class="close-searchbox">
+                <i class="ri-close-line"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="hero-wrap style1 bg-concrete">
+        <img
+          src="assets/img/hero/hero-shape-1.png"
+          alt="Image"
+          class="hero-shape-one"
+        />
+        <div class="container">
+          <div class="row gx-5 align-items-center">
+            <div class="col-lg-6 col-md-11">
+              <div class="hero-content">
+                                <h1
+                  data-aos="fade-up"
+                  data-aos-duration="1200"
+                  data-aos-delay="300"
+                >
+                The safety of the people shall be the highest law
+                </h1>
+                <p
+                  data-aos="fade-up"
+                  data-aos-duration="1200"
+                  data-aos-delay="400"
+                >
+                Welcome to the Directorate Of Road Traffic Services, where safety is our top priority. From driver's license applications to road safety education, we are committed to upholding the highest standards of safety on our roads.
+                </p>
+                <a href="about.html" class="btn style1">Learn More</a>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="hero-img-wrap">
+                <div class="hero-shape-two">
+                  <img
+                    src="assets/img/hero/hero-shape-2.png"
+                    alt="Image"
+                    class="rotate"
+                  />
+                </div>
+                <img
+                  class="hero-img"
+                  src="assets/img/hero-img-1.png"
+                  alt="Image"
+                />
+                <div class="hero-promo-text">
+                  <div class="br_1"></div>
+                  <div class="br_2"></div>
+                  <span class="semi-rotate"
+                    ><i class="flaticon-steering-wheel"></i
+                  ></span>
+                  <h4>25+<span>License Issued Today</span></h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="book-course-wrap style1">
+        <div class="container">
+          <div class="book-course-form">
+            <h4>Enrole Into Our AProved Driving Schools</h4>
+            <form action="#" class="booking-form">
+              <div class="form-group">
+                <label for="name">Your Name*</label>
+                <input type="text" id="name" placeholder="Name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Your Email*</label>
+                <input type="email" id="email" placeholder="Email" required />
+              </div>
+              <div class="form-group">
+                <label for="course-plan">Choose A School</label>
+                <select name="course-plan" id="course-plan">
+                  <option value="0">Ace Center Driving Center</option>
+                  <option value="1">Access Driving School	 </option>
+                  <option value="3">Asetom Drive Right School	</option>
+                  <option value="4">Aso Driving School</option>
+                  <option value="4">Bamaje Driving School	</option>
+                  <option value="4">Best Option Driving School	</option>
+                  <option value="4">Damarson Driving School	</option>
+                  <option value="4">Divine Int. Driving School	</option>
+                  <option value="4">Dokun Driving School	</option>
+                  <option value="4">Famous Driving School	</option>
+                  <option value="4">FC Driving School	</option>
+                  <option value="4">Flame Driving School	</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="date">Date Booking</label>
+                <input type="date" id="date" required />
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn style1 w-100 d-block" id="subbs">
+                  Register Now
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <section class="about-wrap style1 ptb-100">
+        <div class="container">
+          <div class="row gx-5 align-items-center">
+            <div
+              class="col-lg-6"
+              data-aos="fade-right"
+              data-aos-duration="1200"
+              data-aos-delay="200"
+            >
+              <div class="about-img-wrap">
+                <div class="about-bg-1 bg-f"></div>
+                <div class="about-promo-box bounce">
+                  <i class="flaticon-star"></i>
+                  <h4>228 <span>License Issued </span></h4>
+                </div>
+              </div>
+            </div>
+            <div
+              class="col-lg-6"
+              data-aos="fade-left"
+              data-aos-duration="1200"
+              data-aos-delay="200"
+            >
+              <div class="about-content">
+                <div class="content-title style1">
+                  <span>Our Services</span>
+                  <h2>From Selecting a Registered Driving School to Getiing a Driver's License</h2>
+                  <p>
+                    Explore our list of accredited driving schools and choose the one that suits your needs. Quality education and safe driving start here.
+                    Apply for Your Driver's License: Ready to hit the road? Start your journey by applying for your driver's license online. We make the process simple and efficient.
+                  </p>
+                </div>
+                <div class="feature-item-wrap">
+                  <div class="feature-item style1">
+                    <div class="feature-icon">
+                      <i class="flaticon-check"></i>
+                    </div>
+                    <div class="feature-text">
+                      <h3>Book Driving Tests</h3>
+                      <p>
+                        Schedule Your Driving Test: Get one step closer to your driver's license. Book your driving test conveniently and choose a time that works for you.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="feature-item style1">
+                    <div class="feature-icon">
+                      <i class="flaticon-check"></i>
+                    </div>
+                    <div class="feature-text">
+                      <h3>Renew Driver's Licenses</h3>
+                      <p>Renew Your Driver's License: Don't let your license expire. Renew it hassle-free through our online portal. Stay legal, stay on the road.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+     
+
+      <section class="why-choose-wrap style1 ptb-100">
+        <div class="container">
+          <div class="row gx-5 align-items-center">
+            <div
+              class="col-lg-6 col-12 order-lg-1 order-2"
+              data-aos="fade-right"
+              data-aos-duration="1200"
+              data-aos-delay="200"
+            >
+              <div class="wh-content" id="aboutus">
+                <div class="content-title style1">
+                  <span>THE PARTWAY</span>
+                  <h2>Jurney to become a licensed driver</h2>
+                  <p>
+                    You can start the jurney of becoming a licensed driver through the following partways. or you can chose to byepass the other processes so long as you have been registered
+                  </p>
+                </div>
+                <div class="feature-item-wrap">
+                  <div class="feature-item style1">
+                    <div class="feature-icon">
+                      <i class="flaticon-check"></i>
+                    </div>
+                    <div class="feature-text">
+                      <h3>1. Registered Driving Schools</h3>
+                      <p>Explore a list of registered driving schools in your area. Choose a trusted school to kickstart your journey towards becoming a safe and responsible driver.</p>
+                    </div>
+                  </div>
+                  <div class="feature-item style1">
+                    <div class="feature-icon">
+                      <i class="flaticon-check"></i>
+                    </div>
+                    <div class="feature-text">
+                      <h3>2. Driver's License Application</h3>
+                      <p>Apply for your driver's license with ease through our online application process. Follow the simple steps to get on the road legally and safely.</p>
+                    </div>
+                  </div>
+                  <div class="feature-item style1">
+                    <div class="feature-icon">
+                      <i class="flaticon-check"></i>
+                    </div>
+                    <div class="feature-text">
+                      <h3>3. Booking Driving Tests:</h3>
+                      <p>Schedule your driving test on your terms. Choose your preferred date, time, and location, and embark on the path to becoming a licensed driver.</p>
+                    </div>
+                  </div>
+                  <div class="feature-item style1">
+                    <div class="feature-icon">
+                      <i class="flaticon-check"></i>
+                    </div>
+                    <div class="feature-text">
+                      <h3>4. Renewal of Driver's Licenses</h3>
+                      <p>Don't let your license expire. Renew it hassle-free and continue enjoying the freedom and responsibilities that come with being a licensed driver.</p>
+                    </div>
+                  </div>
+                </div>
+                <a href="login.html" class="btn style1">Register Now</a>
+              </div>
+            </div>
+            <div
+              class="col-lg-6 col-12 order-lg-2 order-1"
+              data-aos="fade-left"
+              data-aos-duration="1200"
+              data-aos-delay="200"
+            >
+              <div class="wh-img-wrap">
+                <div class="wh-bg-1 bg-f">
+                  <div class="wh-promo-video">
+                    <div class="wh-promo-video-bg bg-f">
+                      <div class="play-text"><span>PLAY NOW</span></div>
+                      <a
+                        class="play-video"
+                        data-fancybox
+                        href="https://www.youtube.com/watch?v=qSbp0DV6U_k"
+                      >
+                        <span class="play-now icon">
+                          <i class="flaticon-play-1"></i>
+                          <span class="ripple"></span
+                        ></span>
+                      </a>
+                    </div>
+                    <div class="wh-promo-text">
+                      <h5>A Tour Of Impound Lots In Abuja, Activities OF DRTS +More | Dateline</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="vehicle-wrap ptb-100 bg-concrete">
+        <div class="container">
+          <div class="content-title style1 text-center mb-40">
+            <span>ACREDITED SCHOOLS</span>
+            <h2>These Are Some Of Our Training Centres</h2>
+          </div>
+          <div class="row justify-content-center">
+            <div
+              class="col-xl-4 col-lg-6 col-md-6"
+              data-aos="fade-up"
+              data-aos-duration="1200"
+              data-aos-delay="200"
+            >
+              <div class="vehicle-card style1">
+                <div class="vehicle-img">
+                  <img src="assets/img/ace.jpg" alt="Image" />
+                </div>
+                <div class="vehicle-info">
+                  <h3><a href="login.html">Ace Center Driving Center</a></h3>
+                  <p>
+                    D35 Emab plaza Wuse II, Abuja
+                  </p>
+                  <div class="vehicle-meta-info">
+                    <div class="vehicle-promo-info">
+                      <div class="vehicle-promo-img">
+                        <img src="assets/img/logo 23.jpg" alt="Image" />
+                      </div>
+                      <h6>Reg No. <span>FRSC/00408/FCT/0029</span></h6>
+                    </div>
+                    <a class="link style1" href="login.html">
+                      Check Out <i class="flaticon-right-arrow"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="col-xl-4 col-lg-6 col-md-6"
+              data-aos="fade-up"
+              data-aos-duration="1200"
+              data-aos-delay="300"
+            >
+              <div class="vehicle-card style1">
+                <div class="vehicle-img">
+                  <img src="assets/img/driver3.jpg" alt="Image" />
+                </div>
+                <div class="vehicle-info">
+                  <h3><a href="login.html">Access Driving School	</a></h3>
+                  <p>
+                    FHA Nyanya Along Karu road, Abuja
+
+                  </p>
+                  <div class="vehicle-meta-info">
+                    <div class="vehicle-promo-info">
+                      <div class="vehicle-promo-img">
+                        <img src="assets/img/logo 23.jpg" alt="Image" />
+                      </div>
+                      <h6>Reg No. <span>FRSC/00296/FCT/0024	</span></h6>
+                    </div>
+                    <a class="link style1" href="login.html">
+                      Check Out <i class="flaticon-right-arrow"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="col-xl-4 col-lg-6 col-md-6"
+              data-aos="fade-up"
+              data-aos-duration="1200"
+              data-aos-delay="500"
+            >
+              <div class="vehicle-card style1">
+                <div class="vehicle-img">
+                  <img src="assets/img/driver4.jpg" alt="Image" />
+                </div>
+                <div class="vehicle-info">
+                  <h3>
+                    <a href="login.html">Asetom Drive Right School</a>
+                  </h3>
+                  <p>
+                    34 Ofem Oboma CBN Chods estate Wumba district Apo, Abuja
+
+                  </p>
+                  <div class="vehicle-meta-info">
+                    <div class="vehicle-promo-info">
+                      <div class="vehicle-promo-img">
+                        <img src="assets/img/logo 23.jpg" alt="Image" />
+                      </div>
+                      <h6>Reg. No. <span>FRSC/00292/FCT/0020	</span></h6>
+                    </div>
+                    <a class="link style1" href="login.html">
+                      Check Out <i class="flaticon-right-arrow"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-center mt-10">
+            <p class="section-subtext">
+              Book Your First Driving Lesson With Us.
+              <a href="login.html" class="link style1">
+                View All Schools <i class="flaticon-right-arrow"></i
+              ></a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="counter-area style1">
+        <div class="container">
+          <div class="counter-card-wrap">
+            <div class="row">
+              <div class="col-xl-3 col-lg-3 col-md-6 col-6">
+                <div class="counter-card">
+                  <span class="counter-icon">
+                    <i class="flaticon-graduated"></i>
+                  </span>
+                  <div class="counter-text">
+                    <h2 class="counter-num">
+                      <span class="odometer" data-count="6500"></span>
+                      <span class="target">+</span>
+                    </h2>
+                    <p>Learn and get Licensed</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-6 col-6">
+                <div class="counter-card">
+                  <span class="counter-icon">
+                    <i class="flaticon-teacher"></i>
+                  </span>
+                  <div class="counter-text">
+                    <h2 class="counter-num">
+                      <span class="odometer" data-count="100"></span>
+                      <span class="target">+</span>
+                    </h2>
+                    <p>Top Driving Schools</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-6 col-6">
+                <div class="counter-card">
+                  <span class="counter-icon">
+                    <i class="flaticon-reading"></i>
+                  </span>
+                  <div class="counter-text">
+                    <h2 class="counter-num">
+                      <span class="odometer" data-count="550"></span>
+                      <span class="target">+</span>
+                    </h2>
+                    <p>Current Student</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-6 col-6">
+                <div class="counter-card">
+                  <span class="counter-icon">
+                    <i class="flaticon-car"></i>
+                  </span>
+                  <div class="counter-text">
+                    <h2 class="counter-num">
+                      <span class="odometer" data-count="940"></span>
+                      <span class="target">+</span>
+                    </h2>
+                    <p>Own Vehicles</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <section class="team-wrap ptb-100">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-6 offset-xl-3 col-lg-10 offset-lg-1">
+              <div class="section-title style1 text-center mb-40">
+                <span>Great Experience</span>
+                <h2>Meet Our Valuable Team</h2>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div
+              class="col-xl-4 col-lg-6 col-md-6"
+              data-aos="fade-up"
+              data-aos-duration="1200"
+              data-aos-delay="200"
+            >
+              <div class="team-card style1">
+                <div class="team-img">
+                  <img src="assets/img/team/team-1.jpg" alt="Image" />
+                  <ul class="social-profile list-style style1">
+                    <li>
+                      <a target="_blank" href="https://facebook.com/">
+                        <i class="ri-facebook-fill"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a target="_blank" href="https://linkedin.com/">
+                        <i class="ri-linkedin-fill"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a target="_blank" href="https://twitter.com/">
+                        <i class="ri-twitter-fill"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a target="_blank" href="https://pinterest.com/">
+                        <i class="ri-pinterest-fill"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="team-info-wrap">
+                  <div class="team-info">
+                    <h3><a href="team-details.html">Erik Ondricka</a></h3>
+                    <span>Senior Instructor</span>
+                  </div>
+                  <a href="team-details.html" class="team-link"
+                    ><i class="flaticon-right-arrow"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+            <div
+              class="col-xl-4 col-lg-6 col-md-6"
+              data-aos="fade-up"
+              data-aos-duration="1200"
+              data-aos-delay="300"
+            >
+              <div class="team-card style1">
+                <div class="team-img">
+                  <img src="assets/img/team/team-2.jpg" alt="Image" />
+                  <ul class="social-profile list-style style1">
+                    <li>
+                      <a target="_blank" href="https://facebook.com/">
+                        <i class="ri-facebook-fill"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a target="_blank" href="https://linkedin.com/">
+                        <i class="ri-linkedin-fill"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a target="_blank" href="https://twitter.com/">
+                        <i class="ri-twitter-fill"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a target="_blank" href="https://pinterest.com/">
+                        <i class="ri-pinterest-fill"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="team-info-wrap">
+                  <div class="team-info">
+                    <h3><a href="team-details.html">Mossie Ullrich</a></h3>
+                    <span>Driving Instructor</span>
+                  </div>
+                  <a href="team-details.html" class="team-link"
+                    ><i class="flaticon-right-arrow"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+            <div
+              class="col-xl-4 col-lg-6 col-md-6"
+              data-aos="fade-up"
+              data-aos-duration="1200"
+              data-aos-delay="400"
+            >
+              <div class="team-card style1">
+                <div class="team-img">
+                  <img src="assets/img/team/team-3.jpg" alt="Image" />
+                  <ul class="social-profile list-style style1">
+                    <li>
+                      <a target="_blank" href="https://facebook.com/">
+                        <i class="ri-facebook-fill"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a target="_blank" href="https://linkedin.com/">
+                        <i class="ri-linkedin-fill"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a target="_blank" href="https://twitter.com/">
+                        <i class="ri-twitter-fill"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a target="_blank" href="https://pinterest.com/">
+                        <i class="ri-pinterest-fill"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="team-info-wrap">
+                  <div class="team-info">
+                    <h3><a href="team-details.html">Jackie Schmeler</a></h3>
+                    <span>Senior Instructor</span>
+                  </div>
+                  <a href="team-details.html" class="team-link"
+                    ><i class="flaticon-right-arrow"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-center mt-10">
+            <p class="section-subtext">
+              Book Your First Driving Lesson With Us.
+              <a href="team.html" class="link style1">
+                View All Team Member<i class="flaticon-right-arrow"></i
+              ></a>
+            </p>
+          </div>
+        </div>
+      </section> -->
+
+      <section class="testimonial-wrap testimonial-bg-1 ptb-100 bg-f">
+        <div class="overlay bg-black op-3"></div>
+        <div class="container">
+          <div class="row">
+            <div
+              class="col-xl-6 offset-xl-6 col-lg-7 offset-lg-5"
+              data-aos="fade-left"
+              data-aos-duration="1200"
+              data-aos-delay="200"
+            >
+              <div class="testimonial-slider-one owl-carousel">
+                <div class="testimonial-card style1">
+                  <p class="client-quote">
+                    Finding a reputable driving school was made simple by this website. I chose a school near me and got started on my driving lessons. The website's comprehensive list of schools was a real lifesaver
+                  </p>
+                  <div class="client-info-wrap">
+                    <div class="client-img">
+                      <img
+                        src="https://scontent-los2-1.xx.fbcdn.net/v/t39.30808-6/367475201_5921777264590514_7656894211400498013_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=a2f6c7&_nc_eui2=AeHoRC-wC2Kk65dtAgPpDStXEbWtgilOibgRta2CKU6JuFYNkilElEVo9ZGTHAJm5eUzjNzk4M_hSo7WMx-QGj8m&_nc_ohc=ZZtkKuGtj3sAX-g2Hjy&_nc_ht=scontent-los2-1.xx&oh=00_AfB1zkBUcmZSdsFPYwO_exXgR_oBeh5zyXjAQWsJA3Y4vA&oe=65149EE0"
+                        alt="Image"
+                      />
+                    </div>
+                    <div class="client-info">
+                      <h3>Joel Odufu</h3>
+                      <span>Founder Emerald Codelines</span>
+                    </div>
+                    <div class="quote-icon">
+                      <i class="flaticon-quote"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="testimonial-card style1">
+                  <p class="client-quote">
+                    Thanks to the Directorate Of Road Traffic Services website, I was able to apply for my driver's license easily. The step-by-step process was a breeze, and I received my license in no time. I highly recommend their services to all aspiring drivers.
+                  </p>
+                  <div class="client-info-wrap">
+                    <div class="client-img">
+                      <img
+                        src="https://scontent-los2-1.xx.fbcdn.net/v/t39.30808-6/382738049_2612292348929943_7815972674972296586_n.jpg?stp=dst-jpg_p843x403&_nc_cat=105&ccb=1-7&_nc_sid=52f669&_nc_eui2=AeE7lDLLtBunvzJlxYPIELOgdvwysaxyNVl2_DKxrHI1WePaeD_iWkwrydxAPpvtwIQdi0IuhGa_NpX0wDXky4t4&_nc_ohc=pDQJD9p30DEAX_dZ1qE&_nc_oc=AQlGvf6A0RCKF5Jclm55gHMTZGsi9uLjUBrZHQkD0fK86uOXEl294eNa86pXIiawvoE&_nc_ht=scontent-los2-1.xx&oh=00_AfDTmb46M6_bU5H4QPZMBmajjH2Vmzz1pOOvughmZmDynQ&oe=65143AB9"
+                        alt="Image"
+                      />
+                    </div>
+                    <div class="client-info">
+                      <h3>Gloria Ezenwugo</h3>
+                      <span>Enterpreneur</span>
+                    </div>
+                    <div class="quote-icon">
+                      <i class="flaticon-quote"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="testimonial-card style1">
+                  <p class="client-quote">
+                    Booking my driving test through the Directorate Of Road Traffic Services website was a breeze. I selected a convenient time slot, aced my test, and I'm now a licensed driver. It couldn't have been any easier!
+                  </p>
+                  <div class="client-info-wrap">
+                    <div class="client-img">
+                      <img
+                        src="https://scontent-los2-1.xx.fbcdn.net/v/t39.30808-6/247266950_10227169961664816_5619659887167476284_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a2f6c7&_nc_eui2=AeGl_NmDYbGhoPzXmHCgbqDBvFrufewMgzi8Wu597AyDOARwrxeAS-ZaZ6b_Lv1e6S93Vm6KqrBi-bt8jRoWDIDP&_nc_ohc=iwAeDp78pU4AX85TyBK&_nc_ht=scontent-los2-1.xx&oh=00_AfAQ7CG0dDeeNQ0bmJCd-NuRfHcFfv3isJG6MqPehvAoZA&oe=6515772E"
+                        alt="Image"
+                      />
+                    </div>
+                    <div class="client-info">
+                      <h3>Onaz Ochai</h3>
+                      <span>CEO, Brandix ltd</span>
+                    </div>
+                    <div class="quote-icon">
+                      <i class="flaticon-quote"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="testimonial-card style1">
+                  <p class="client-quote">
+                    I was worried about renewing my driver's license, but this website made it painless. I submitted my application online, paid the fee, and my renewed license arrived in the mail. It was so convenient!
+                  </p>
+                  <div class="client-info-wrap">
+                    <div class="client-img">
+                      <img
+                        src="https://scontent-los2-1.xx.fbcdn.net/v/t39.30808-6/357357856_6075310482597223_1861404079618595611_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=a2f6c7&_nc_eui2=AeEJbcXFUqZi1nlaNq44E21Y8SZg980k_EfxJmD3zST8R4cFGoi_1Yju6t7oMx51CGDbe2qJZX7gHbFhs-bcz448&_nc_ohc=iKc1plzVirQAX-t3vZ1&_nc_ht=scontent-los2-1.xx&oh=00_AfArW8N0eHjRVwKR1xcYu2PYxUS_5XEo2vJt9flI5dmoyg&oe=6513B149"
+                        alt="Image"
+                      />
+                    </div>
+                    <div class="client-info">
+                      <h3>Sixtus Uzochukwu</h3>
+                      <span>Founder, IBAC</span>
+                    </div>
+                    <div class="quote-icon">
+                      <i class="flaticon-quote"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="testimonial-card style1">
+                  <p class="client-quote">
+                    Attending a road safety seminar organized by the Directorate Of Road Traffic Services was an eye-opening experience. The knowledge I gained has made me a safer and more responsible driver. Kudos to their educational initiatives
+                  </p>
+                  <div class="client-info-wrap">
+                    <div class="client-img">
+                      <img
+                        src="https://scontent-los2-1.xx.fbcdn.net/v/t39.30808-6/277247473_1860547860816996_6324719701787551441_n.jpg?stp=dst-jpg_p843x403&_nc_cat=102&ccb=1-7&_nc_sid=52f669&_nc_eui2=AeFjgb4tlN0rngZnwKyk4zrhqHjBdcixe6WoeMF1yLF7pQiqaN3AqyHtJMUYsv0A8KQjKg4PK159QhGVzlj8wXQB&_nc_ohc=K-V9dvA-FMcAX8gSRYO&_nc_ht=scontent-los2-1.xx&oh=00_AfAwwWRjhGe8CjByXbGDtXwgd2UpR7zWyAJTHMsyJyjgRg&oe=651523C2"
+                        alt="Image"
+                      />
+                    </div>
+                    <div class="client-info">
+                      <h3>Nseobot Afaha</h3>
+                      <span>Enterpreneur</span>
+                    </div>
+                    <div class="quote-icon">
+                      <i class="flaticon-quote"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="testimonial-card style1">
+                  <p class="client-quote">
+                    I had a question about my license application, so I reached out to their customer support. They were incredibly helpful and resolved my issue promptly. Excellent service!
+                  </p>
+                  <div class="client-info-wrap">
+                    <div class="client-img">
+                      <img
+                        src="https://scontent-los2-1.xx.fbcdn.net/v/t39.30808-6/341400776_1879858012382040_1007730339343374727_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=a2f6c7&_nc_eui2=AeHGpR9zORDlntHReydL_DIL1fOBo54DgT7V84GjngOBPnR6p3PAoZfD7xB6J5dOgDRFVigXMFR34ysbtzmr1KS7&_nc_ohc=NviG6Ba67r4AX95L6xy&_nc_ht=scontent-los2-1.xx&oh=00_AfAsO_wlZUMghaeAFDtgw9aNroCX_c-mDCe60pH4sl40Ow&oe=6514ECE1"
+                        alt="Image"
+                      />
+                    </div>
+                    <div class="client-info">
+                      <h3>Brian J Umana</h3>
+                      <span>Founder, Lexamd Inc</span>
+                    </div>
+                    <div class="quote-icon">
+                      <i class="flaticon-quote"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    
+
+      <footer class="footer-wrap pt-100">
+        <div class="container">
+          <div class="row pb-75">
+            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+              <div class="footer-widget">
+                <a href="index.html" class="footer-logo">
+                  <img src="assets/img/logo.png" alt="Image" />
+                </a>
+                <p class="comp-desc">
+                  The FCT Directorate of Road Traffic Services is determined to serve you better.Call 09-3606046 for enquiries, complaints, observations, etc.
+                </p>
+                <ul class="social-profile list-style style1">
+                  <li>
+                    <a target="_blank" href="https://www.facebook.com/FCTDRTS?_rdc=1&_rdr">
+                      <i class="flaticon-facebook"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a target="_blank" href="https://twitter.com/FCT_DRTS?t=DfO4dMl5PJxjBzxUktw2jQ&s=09">
+                      <i class="flaticon-twitter"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a target="_blank" href="https://www.instagram.com/fct_drts/?igshid=YmMyMTA2M2Y%3D">
+                      <i class="flaticon-instagram"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6">
+              <div class="footer-widget">
+                <h3 class="footer-widget-title">Our Services</h3>
+                <ul class="footer-menu list-style">
+                  <li>
+                    <a href="login.html">
+                      <i class="flaticon-right-arrow-1"></i>
+                      Learn To Drive
+                    </a>
+                  </li>
+                  <li>
+                    <a href="login.html">
+                      <i class="flaticon-right-arrow-1"></i>
+                      Apply for Drivers Licence
+                    </a>
+                  </li>
+                  <li>
+                    <a href="login.html">
+                      <i class="flaticon-right-arrow-1"></i>
+                      Book Driving Test
+                    </a>
+                  </li>
+                  <li>
+                    <a href="login.html">
+                      <i class="flaticon-right-arrow-1"></i>
+                      Renew License
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+              <div class="footer-widget">
+                <h3 class="footer-widget-title">Contact Us</h3>
+                <ul class="contact-info list-style">
+                  <li>
+                    <span><i class="flaticon-phone-call"></i></span>
+                    <h6>Call Now</h6>
+                    <a href="tel:02459271449">(+234)93606046</a>
+                  </li>
+                  <li>
+                    <span><i class="flaticon-location-1"></i></span>
+                    <h6>Location</h6>
+                    <p>Directorate of Road Traffic Service, Mabushi, Abuja, FCT.</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="copyright-text">
+          <div class="container">
+            <p>
+              <i class="ri-copyright-line"></i>
+             
+              <script>
+                document.write(new Date().getFullYear());
+              </script>
+              <span>DRTS</span>. All Rights Reserved By
+              <a href="https://itskysolutions.com/" target="_blank">IT SKY SOLUTIONS</a>
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <a href="javascript:void(0)" class="back-to-top bounce"
+      ><i class="ri-arrow-up-s-line"></i
+    ></a>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/form-validator.min.js"></script>
+    <script src="assets/js/contact-form-script.js"></script>
+    <script src="assets/js/aos.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/odometer.js"></script>
+    <script src="assets/js/fancybox.js"></script>
+    <script src="assets/js/jquery.appear.js"></script>
+    <script src="assets/js/tweenmax.min.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+
+</html>
