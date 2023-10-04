@@ -13,8 +13,17 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+
+
 import InboxIcon from "@mui/icons-material/MoveToInbox";
+import SchoolIcon from "@mui/icons-material/School";
+import SpeedIcon from "@mui/icons-material/Speed";
+import HomeIcon from "@mui/icons-material/Dashboard";
+import UsersIcon from "@mui/icons-material/AccountCircle";
+
+
 import { useNavigate } from "react-router-dom";
+import CardMembership from "@mui/icons-material/CardMembership";
 
 const drawerWidth = 240;
 
@@ -126,7 +135,7 @@ export default function NavBar() {
                   justifyContent: "center",
                 }}
               >
-                <InboxIcon />
+                <HomeIcon />
               </ListItemIcon>
               <ListItemText
                 primary="Dashboard"
@@ -155,7 +164,7 @@ export default function NavBar() {
                   justifyContent: "center",
                 }}
               >
-                <InboxIcon />
+                <CardMembership />
               </ListItemIcon>
               <ListItemText primary="Licenses" sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>
@@ -181,7 +190,7 @@ export default function NavBar() {
                   justifyContent: "center",
                 }}
               >
-                <InboxIcon />
+                <SchoolIcon />
               </ListItemIcon>
               <ListItemText primary="Schools" sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>
@@ -207,7 +216,7 @@ export default function NavBar() {
                   justifyContent: "center",
                 }}
               >
-                <InboxIcon />
+                <SpeedIcon />
               </ListItemIcon>
               <ListItemText
                 primary="Driving Test"
@@ -236,9 +245,9 @@ export default function NavBar() {
                   justifyContent: "center",
                 }}
               >
-                <InboxIcon />
+                <UsersIcon />
               </ListItemIcon>
-              <ListItemText primary="users" sx={{ opacity: open ? 1 : 0 }} />
+              <ListItemText primary="Users" sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>
           </ListItem>
         </List>
