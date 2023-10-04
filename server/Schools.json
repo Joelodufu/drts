@@ -1,0 +1,458 @@
+[
+  {
+    "sn": "1",
+    "accreditionNumber": "FRSC/00408/FCT/0029",
+    "name": "ACE CENTRE DRIVING CENTRE",
+    "address": "D35 EMAB PLAZA WUSE II, ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+
+  },
+  {
+    "sn": "2",
+    "accreditionNumber": "FRSC/00296/FCT/0024",
+    "name": "ACCESS DRIVING SCHOOL",
+    "address": "FHA NYANYA ALONG KARU ROAD ABUJA.",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "3",
+    "accreditionNumber": "FRSC/00292/FCT/0020",
+    "name": "ASETOM DRIVE RIGHT SCHOOL",
+    "address": "34 OFEM OBOMA CBN CHODS ESTATE WUMBA DISTRICT APO ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "4",
+    "accreditionNumber": "FRSC/00070/FCT/0003",
+    "name": "ASO DRIVING SCHOOL",
+    "address": "OPP NNPC MEGA STATION ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "5",
+    "accreditionNumber": "FRSC/00489/ FCT /0029",
+    "name": "BAMAJE DRIVING SCHOOL",
+    "address": "NEPA JUNCTION, OLADIPO DIYA ROAD APO ABUJA.",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "6",
+    "accreditionNumber": "FRSC/00490/ FCT /0030",
+    "name": "BEST OPTION DRIVING SCHOOL",
+    "address": "B35 DANZIYAL PLAZA, OPP NNPC MEGA STATION ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "7",
+    "accreditionNumber": "FRSC/00493/ FCT /0033",
+    "name": "DAMARSON DRIVING SCHOOL",
+    "address": "NO 182 CORNERSHOP NYANYA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "8",
+    "accreditionNumber": "FRSC/00289/FCT/0017",
+    "name": "DIVINE INT. DRIVING SCHOOL",
+    "address": "OPP NNPC MEGA STATION  ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "9",
+    "accreditionNumber": "FRSC/00494/ FCT /0034",
+    "name": "DOKUN DRIVING SCHOOL",
+    "address": "OPP NEPA OFFICE KUBWA ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "10",
+    "accreditionNumber": "FRSC/00406/FCT/0027",
+    "name": "DRIVE RIGHT DRIVING SCHOOL",
+    "address": "SUIT 230 ZUZUMBA PLAZA ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "11",
+    "accreditionNumber": "FRSC/00798/FCT/0044",
+    "name": "EXCEL GLOBAL DRIVING SCHOOL",
+    "address": "NO.1 OROZO SHOPPING COMPLEX STREET, OROZO FCT,ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "12",
+    "accreditionNumber": "FRSC/00790/FCT/0041",
+    "name": "FAMOUS DRIVING SCHOOL",
+    "address": "TOTO ROAD ABAJI",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "13",
+    "accreditionNumber": "FRSC/00792/FCT/0042",
+    "name": "FC DRIVING SCHOOL",
+    "address": "BESIDE ONWA PLAZA BY CAR WASH ROAD ZUBA ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "14",
+    "accreditionNumber": "FRSC/00069/FCT/0002",
+    "name": "FLAME DRIVING SCHOOL",
+    "address": "SUIT A42 M113 PLAZA  GWARINPA ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "15",
+    "accreditionNumber": "FRSC/00293/FCT/0021",
+    "name": "GOD'S GRACE DRIVING SCHOOL",
+    "address": "OPP. NEPA OFFICE KARU SITE  FCT",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "16",
+    "accreditionNumber": "FRSC/00695/FCT/0040",
+    "name": "HERRITAGE DRIVING SCHOOL",
+    "address": " MOB PLAZA BY VIO MABUSHI",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "17",
+    "accreditionNumber": "FRSC/00495/ FCT /0035",
+    "name": "HIKE DRIVING SCHOOL",
+    "address": "FCDA JUNCION KUBWA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "18",
+    "accreditionNumber": "FRSC/00794/FCT/0043",
+    "name": "HUZEE CAR DRIVING SCHOOL ",
+    "address": "A76/A77 EFAB MALL, AREA 11 GARKI, ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "19",
+    "accreditionNumber": "FRSC/00496/ FCT /0036",
+    "name": "JEWEL DRIVING SCHOOL",
+    "address": "LUZUMBA COMMERCIAL PLAZA AREA 10, ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "20",
+    "accreditionNumber": "FRSC/00401/FCT/0026",
+    "name": "JOTHARM DRIVING INSTITUTE",
+    "address": "SUITE D 110 EFAB MALL,AREA 11 GARKI ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "21",
+    "accreditionNumber": "FRSC/00497/ FCT /0037",
+    "name": "JOY INT DRIVING SCHOOL",
+    "address": "OPP INEC OFFICE AREA 10, GARKI ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "22",
+    "accreditionNumber": "RSC/00786/FCT/0040",
+    "name": "KDJ DRIVING SCHOOL",
+    "address": "MADAM MERCY ROAD DAGRI G/LADA ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "23",
+    "accreditionNumber": "FRSC/00285/FCT/0013",
+    "name": "LUCKY STAR DRIVING SCHOOL",
+    "address": "OPP DANVILE APO ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "24",
+    "accreditionNumber": "FRSC/00072/FCT/0005",
+    "name": "MIRACLE DRIVING SCHOOL",
+    "address": "OPPOSITE NANA BASIC ACADEMY MPAPE, FCT, ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "25",
+    "accreditionNumber": "FRSC/00291/FCT/0019",
+    "name": "MARTINS INT DRIVING SCHOOL",
+    "address": "OPP NEPA AREA 10 ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "26",
+    "accreditionNumber": "FRSC/00288/FCT/0016",
+    "name": "NATUS DRIVING SCHOOL",
+    "address": "OPP UNI ABUJA TEACHING HOSPITAL GWAGWALADA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "27",
+    "accreditionNumber": "FRSC/00498/ FCT /0038",
+    "name": "NEW WORLD DRIVING SCHOOL",
+    "address": "OPP NNPC MEGA STATION, ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "28",
+    "accreditionNumber": "FRSC/00290/FCT/0018",
+    "name": "NEWMAN DRIVING SCHOOL",
+    "address": "BEHIND NEW CHELSEA HOTEL ABUJA.",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "29",
+    "accreditionNumber": "FRSC/00073/FCT/0006",
+    "name": "OLABISI DRIVING SCHOOL",
+    "address": "1ST AVENUE BY KADO BIKO GWARINPA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "30",
+    "accreditionNumber": "FRSC/00499/ FCT /0039",
+    "name": "PIONEER DRIVING SCHOOL,",
+    "address": "MALLAM SHEHU PLAZA JABI UPSTAIRS. ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "31",
+    "accreditionNumber": "FRSC/00297/FCT/0025",
+    "name": "RITI GLOBAL DRIVING SCHOOL",
+    "address": "BEHIND CIVIC CENTRE GWAGWALADA ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "32",
+    "accreditionNumber": "FRSC/00295/FCT/0023",
+    "name": "SAVE LIFE / EXCELLENCE DRIVING SCHOOL,",
+    "address": "OPP JIKOYI POLICE STATION ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "33",
+    "accreditionNumber": "FRSC/00078/FCT/0011",
+    "name": "STANDARD DRIVING SCHOOL.",
+    "address": "OPP OCEANIC BANK 3RD AVENUE GWARINPA ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "34",
+    "accreditionNumber": "FRSC/00492/ FCT /0032",
+    "name": "CANNANLAND  DRIVING SCHOOL,",
+    "address": "OPP DEFENCE MINISTRY AREA  10, ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "35",
+    "accreditionNumber": "FRSC/00287/FCT/0015",
+    "name": "TESSY DRIVING SCHOOL",
+    "address": "OPP DEFENCE MINISTRY AREA  10, ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "36",
+    "accreditionNumber": "FRSC/00294/FCT/0022",
+    "name": "WISDOM DRIVING SCHOOL",
+    "address": "OPP CUSTOM CLINIC KARU ABUJA.",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "37",
+    "accreditionNumber": "FRSC/00812/FCT/0045",
+    "name": "FETAL DRIVING SCHOOL",
+    "address": "DO6 FATAL CLOSE DABO ESTATE LIFE CAMP EXTENSION, ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "38",
+    "accreditionNumber": "FRSC/00824/FCT/0046",
+    "name": "I DRIVE SMART DRIVING SCHOOL",
+    "address": "NO 9A RABAT STREET WUSE ZONE 6, ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "39",
+    "accreditionNumber": "FRSC/00829/FCT/0047",
+    "name": "AA RESCUE DRIVING SCHOOL",
+    "address": "SUITE 1C ADISA PLAZA, NO.39 DAVID EJOOR CRESENT OPP NNPC FILLING STATION GUDU DISTRICT ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "40",
+    "accreditionNumber": "FRSC/00839/FCT/0048",
+    "name": "ARMY HEADQUARTER (AHQ) GARRISON DRIVING SCHOOL",
+    "address": "ARMY HEADQUARTERS GARRISON MOGADISHU CANTONMENT, ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "41",
+    "accreditionNumber": "FRSC/00840/FCT/0049",
+    "name": "FB DAMSEL DRIVING SCHOOL",
+    "address": "SUITE S19 AMADEN PLAZA MABUSHI FCT ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "42",
+    "accreditionNumber": "FRSC/00844/FCT/0050",
+    "name": "DON DE BEST DRIVING SCHOOL",
+    "address": "OPP. CATHOLIC CHURCH OLD KARMO LLIFE CAMP ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "43",
+    "accreditionNumber": "FRSC/00845/FCT/0051",
+    "name": "EXECUTIVE DRIVING SCHOOL LIMITED",
+    "address": "GATEWAY PLAZA 208 ZAKAYAH MAIMALARI WAY, CENTRAL BUSINESS AREA, ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "44",
+    "accreditionNumber": "FRSC/00854/FCT/0052",
+    "name": "HEPHZIBATH DRIVING SCHOOL",
+    "address": "NO.1&2 WOWO PARK KUJE, ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "45",
+    "accreditionNumber": "FRSC/00860/FCT/0053",
+    "name": "STANFORD DRIVERS COLLEGE",
+    "address": "HABIBA CRESCENT, WUSE ZONE 2, ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "46",
+    "accreditionNumber": "FRSC/00897/FCT/0056",
+    "name": "MASTER DRIVIN G SCHOOL",
+    "address": "AREA 10, OPP CON OIL ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "47",
+    "accreditionNumber": "FRSC/00945/FCT/0057",
+    "name": "RSSP GESCHENK LTD",
+    "address": "SUITE 3, LOZUMBA COMMERCIAL COMPLEX AREA 10, GARKI, ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "48",
+    "accreditionNumber": "FRSC/00957/FCT/0058",
+    "name": "KOMON SENSE SCHOOL OF MOTORING",
+    "address": "103 KWAME NKURMA CRESCENT, ASOKOLO",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "49",
+    "accreditionNumber": "FRSC/00958/FCT/0059",
+    "name": "OMENET DRIVING SCHOOL",
+    "address": "SUITE 023 FASHARE PLAZA KUBWA, ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "50",
+    "accreditionNumber": "FRSC/00959/FCT/0060",
+    "name": "OSE  DRIVING SCHOOL",
+    "address": "NO.5, 1, 616 JUNCTION BWARI ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "51",
+    "accreditionNumber": "FRSC/010119/FCT/0061",
+    "name": "SAMTEN DRIVING SCHOOL",
+    "address": "SHOP 2 BLK A BAKARA PLAZA & GARDEN, ALONG 11 (H) CRESCENT LUGBE FHA, ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "52",
+    "accreditionNumber": "FRSC/01065/FCT/0062",
+    "name": "MEDALLION DRIVING ACADEMY",
+    "address": "8TH FLOOR LABOUR HOUSE , CENTRAL BUSINESS DISTRICT, ABUJA FCT",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "53",
+    "accreditionNumber": "FRSC/01067/FCT/0064",
+    "name": "CHIDON DRIVING SCHOOL",
+    "address": "NO7 MANO STREET OF LUKULU STREET, WUSE ZONE 3, ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "54",
+    "accreditionNumber": "FRSC/01066/FCT/0063",
+    "name": "AUTOMOBILE ACCREDITED LIMITED",
+    "address": "22 KUMASI CRESCENT, WUSE II, ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "55",
+    "accreditionNumber": "FRSC/01134/FCT/0067",
+    "name": "SKY DRIVING SCHOOL ",
+    "address": "F9 NYANYAN PLAZA FCT ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "56",
+    "accreditionNumber": "FRSC/01133/FCT/0066",
+    "name": "ONELIFE BEST DRIVING SCHOOL",
+    "address": "SUITE 202A PLOT 401 DBM PLAZA, NAUOKLHOT STREET ZONE 1, WUSE, ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "57",
+    "accreditionNumber": "FRSC/01132/FCT/0065",
+    "name": "BRAVURA DRIVING ACADEMY",
+    "address": "BLOCK B SUITE 20 LANDMARK PLAZA, YEDSERAM ST.MAITAMA, FCT, ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "58",
+    "accreditionNumber": "FRSC/01135/FCT/0068",
+    "name": "PEACE AND UNITY DRIVING SCHOOL",
+    "address": "C 10 NADASHI  PLAZA KURUDU BUS STOP FCT, ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "59",
+    "accreditionNumber": "FRSC/01137/FCT/0070",
+    "name": "TRIPOD DRIVING SCHOOL  ",
+    "address": "SUITE 42 AMAC MARKET",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "60",
+    "accreditionNumber": "FRSC/01138/FCT/0071",
+    "name": "BUHARI RAPHAEL ENTERPRISES ",
+    "address": "IDU FOREST, IDU INDUSTRIAL LAYOUT, ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "61",
+    "accreditionNumber": "FRSC/01136/FCT/0069",
+    "name": "GLORY INT' DRIVING SCHOOL",
+    "address": "PLOT 217,SHETTIMA MUNGUNO CRESCENT UTAKO DISTRICT ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "62",
+    "accreditionNumber": "FRSC/01144/FCT/0072",
+    "name": "SAFETY VISION DRIVING SCHOOL",
+    "address": "NO6, AKWA STREET, SUITE 207/208 LOZUMBA COMMERCIAL COMPLEX AREA 10",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "63",
+    "accreditionNumber": "FRSC/01180/FCT/0073",
+    "name": "KINGS CITY DRIVING SCHOOL",
+    "address": "SHOP 295 EDA PLAZA JABI, ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "64",
+    "accreditionNumber": "FRSC/01181/FCT/0074",
+    "name": "DAV-DAN DRIVING SCHOOL",
+    "address": "BEHIND GARKI SUPERMARKET OPPOSITE DIAMOND BANK AREA 11, ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  },
+  {
+    "sn": "65",
+    "accreditionNumber": "FRSC/01182/FCT/0075",
+    "name": "FAIS INTERNATIONAL DRIVING SCHOOL",
+    "address": "GATA PLAZA SUITE 10 PHASE I JIKWOYI, ABUJA",
+    "image":"https://acecenterdrivingschool.com.ng/assets/img/slide%201.jpg"
+  }
+]
