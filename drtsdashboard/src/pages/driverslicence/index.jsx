@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import NavBar from "./../../components/NavBar";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+import StickyHeadTable from "./components/table";
 
 function DriversLicese() {
   return (
@@ -10,6 +10,7 @@ function DriversLicese() {
         <NavBar />
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
           <h1>Drivers Licenses</h1>
+          <StickyHeadTable />
         </Box>
       </Box>
     </>

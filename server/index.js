@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const schoolROute = require("./routes/schools/school");
+const LiceseRoute = require("./routes/license/applicants");
 require("dotenv").config();
 
 //express app
@@ -16,6 +17,7 @@ app.use((req, res, next) => {
 
 //Routes
 app.use("/api/schools", schoolROute);
+app.use("/api/license", LiceseRoute);
 const port = 5000;
 
 //connect to database
