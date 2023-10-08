@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import NavBar from "../../components/NavBar";
 import Box from "@mui/material/Box";
+import StickyHeadTable from "./components/applicantsTable";
 
-function DriversLicence() {
+function Applications() {
   return (
     <>
       <Box sx={{ display: "flex" }}>
         <NavBar />
-        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-          <h1>Drivers Licenses</h1>
-        </Box>
+        <StickyHeadTable />
+        <Box component="main" sx={{ flexGrow: 1, p: 3 }}></Box>
       </Box>
     </>
   );
 }
 
-export default DriversLicence;
+export default Applications;

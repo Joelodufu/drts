@@ -14,13 +14,12 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 
-
+import ApprovalIcon from "@mui/icons-material/Approval";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import SchoolIcon from "@mui/icons-material/School";
 import SpeedIcon from "@mui/icons-material/Speed";
 import HomeIcon from "@mui/icons-material/Dashboard";
 import UsersIcon from "@mui/icons-material/AccountCircle";
-
 
 import { useNavigate } from "react-router-dom";
 import CardMembership from "@mui/icons-material/CardMembership";
@@ -147,7 +146,7 @@ export default function NavBar() {
             disablePadding
             sx={{ display: "block" }}
             onClick={() => {
-              navigate("/license");
+              navigate("/applications");
             }}
           >
             <ListItemButton
@@ -165,6 +164,35 @@ export default function NavBar() {
                 }}
               >
                 <CardMembership />
+              </ListItemIcon>
+              <ListItemText
+                primary="Applications"
+                sx={{ opacity: open ? 1 : 0 }}
+              />
+            </ListItemButton>
+          </ListItem>
+          <ListItem
+            disablePadding
+            sx={{ display: "block" }}
+            onClick={() => {
+              navigate("/license");
+            }}
+          >
+            <ListItemButton
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? "initial" : "center",
+                px: 2.5,
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : "auto",
+                  justifyContent: "center",
+                }}
+              >
+                <ApprovalIcon />
               </ListItemIcon>
               <ListItemText primary="Licenses" sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>
@@ -247,7 +275,7 @@ export default function NavBar() {
               >
                 <UsersIcon />
               </ListItemIcon>
-              <ListItemText primary="Users" sx={{ opacity: open ? 1 : 0 }} />
+              <ListItemText primary="Test Schedules" sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>
           </ListItem>
         </List>
