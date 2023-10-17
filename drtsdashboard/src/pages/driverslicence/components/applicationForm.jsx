@@ -77,12 +77,9 @@ export default function ApplicationForm() {
               onChange={handleInput}
               variant="outlined"
             />
-            <Controls.Input
-              required
+            <Controls.PickDate
               label="Date Of Birth"
-              autoComplete="dateOfBirth"
-              name="dateOfBirth"
-              variant="outlined"
+              name="dateofBirth"
               value={values.dateofBirth}
               onChange={handleInput}
             />

@@ -9,6 +9,7 @@ export function useForm(initialValues) {
       ...values,
       [name]: value,
     });
+    console.log(values);
   };
 
   return {
