@@ -16,6 +16,7 @@ import ListItemText from "@mui/material/ListItemText";
 
 import ApprovalIcon from "@mui/icons-material/Approval";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
+import SchoolIcon from "@mui/icons-material/School";
 import SpeedIcon from "@mui/icons-material/Speed";
 import HomeIcon from "@mui/icons-material/Dashboard";
 import UsersIcon from "@mui/icons-material/AccountCircle";
@@ -116,6 +117,64 @@ export default function NavBar() {
             disablePadding
             sx={{ display: "block" }}
             onClick={() => {
+              navigate("/");
+            }}
+          >
+            <ListItemButton
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? "initial" : "center",
+                px: 2.5,
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : "auto",
+                  justifyContent: "center",
+                }}
+              >
+                <HomeIcon />
+              </ListItemIcon>
+              <ListItemText
+                primary="Dashboard"
+                sx={{ opacity: open ? 1 : 0 }}
+              />
+            </ListItemButton>
+          </ListItem>
+          <ListItem
+            disablePadding
+            sx={{ display: "block" }}
+            onClick={() => {
+              navigate("/applications");
+            }}
+          >
+            <ListItemButton
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? "initial" : "center",
+                px: 2.5,
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : "auto",
+                  justifyContent: "center",
+                }}
+              >
+                <CardMembership />
+              </ListItemIcon>
+              <ListItemText
+                primary="Applications"
+                sx={{ opacity: open ? 1 : 0 }}
+              />
+            </ListItemButton>
+          </ListItem>
+          <ListItem
+            disablePadding
+            sx={{ display: "block" }}
+            onClick={() => {
               navigate("/license");
             }}
           >
@@ -136,6 +195,32 @@ export default function NavBar() {
                 <ApprovalIcon />
               </ListItemIcon>
               <ListItemText primary="Licenses" sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
+          </ListItem>
+          <ListItem
+            disablePadding
+            sx={{ display: "block" }}
+            onClick={() => {
+              navigate("/school");
+            }}
+          >
+            <ListItemButton
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? "initial" : "center",
+                px: 2.5,
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : "auto",
+                  justifyContent: "center",
+                }}
+              >
+                <SchoolIcon />
+              </ListItemIcon>
+              <ListItemText primary="Schools" sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>
           </ListItem>
           <ListItem
@@ -171,7 +256,7 @@ export default function NavBar() {
             disablePadding
             sx={{ display: "block" }}
             onClick={() => {
-              navigate("/profile");
+              navigate("/users");
             }}
           >
             <ListItemButton
@@ -190,7 +275,7 @@ export default function NavBar() {
               >
                 <UsersIcon />
               </ListItemIcon>
-              <ListItemText primary="Profile" sx={{ opacity: open ? 1 : 0 }} />
+              <ListItemText primary="Test Schedules" sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>
           </ListItem>
         </List>

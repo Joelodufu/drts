@@ -4,7 +4,7 @@ import Applications from "./pages/applicants/index";
 import DrivingSchoolPage from "./pages/drivingschool";
 import DrivingTestPage from "./pages/drivingtest";
 import HomePage from "./pages/home";
-import Profile from "./pages/profile";
+import UsersPage from "./pages/users";
 import SignUp from "./pages/signup";
 import SignIn from "./pages/signin";
 import DriversLicence from "./pages/driverslicence";
@@ -21,7 +21,7 @@ export default function App() {
           <Route path="/license" exact element={<DriversLicence />}></Route>
           <Route path="/school" exact element={<DrivingSchoolPage />}></Route>
           <Route path="/test" exact element={<DrivingTestPage />}></Route>
-          <Route path="/profile" exact element={<Profile />}></Route>
+          <Route path="/users" exact element={<UsersPage />}></Route>
           <Route path="/signup" exact element={<SignUp />}></Route>
         </Routes>
       </BrowserRouter>
