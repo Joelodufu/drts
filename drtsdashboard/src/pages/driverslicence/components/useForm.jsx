@@ -9,7 +9,6 @@ export function useForm(initialValues) {
       ...values,
       [name]: value,
     });
-    console.log(values);
   };
 
   return {
@@ -30,6 +29,11 @@ const useStyles = makeStyles((theme) => ({
 
 export function Form(props) {
   const classes = useStyles();
+  const { children, ...others } = props;
 
-  return <form className={classes.root}>{props.children}</form>;
+  return (
+    <form {...others} className={classes.root}>
+      {props.children}
+    </form>
+  );
 }

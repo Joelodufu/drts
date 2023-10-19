@@ -7,11 +7,7 @@ import {
   FormControl,
   Button,
 } from "@mui/material";
-import {
-  getLicenseCenters,
-  getLicenseCollections,
-  getPaymentMethord,
-} from "../services/licenseServices";
+import * as licenseServices from "../services/licenseServices";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { styled } from "@mui/material/styles";
 
@@ -60,9 +56,16 @@ const initialValues = {
 export default function ApplicationForm() {
   const { values, setValues, handleInput } = useForm(initialValues);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    window.alert(values.JSON.stringify());
+    licenseServices.insertLicense(values);
+    window.alert("testiing");
+  };
   return (
     <React.Fragment>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Typography variant="h6" gutterBottom>
           Application Form
         </Typography>
@@ -79,7 +82,7 @@ export default function ApplicationForm() {
             />
             <Controls.PickDate
               label="Date Of Birth"
-              name="dateofBirth"
+              name="dateOfBirth"
               value={values.dateofBirth}
               onChange={handleInput}
             />
@@ -137,21 +140,21 @@ export default function ApplicationForm() {
               label="Proccessing Center"
               value={values.proccessingCenter}
               onChange={handleInput}
-              options={getLicenseCenters()}
+              options={licenseServices.getLicenseCenters()}
             />
             <Controls.MySelect
               name="licenseType"
               label="License Type"
               value={values.licenseType}
               onChange={handleInput}
-              options={getLicenseCollections()}
+              options={licenseServices.getLicenseCollections()}
             />
             <Controls.MySelect
               name="paymentMethod"
               label="Payment Methord"
               value={values.paymentMethod}
               onChange={handleInput}
-              options={getPaymentMethord()}
+              options={licenseServices.getPaymentMethord()}
             />
 
             <FormControl>
@@ -197,7 +200,12 @@ export default function ApplicationForm() {
         </Grid>
         <div>
           <Controls.MyButton type="submit" text="Submit" />
-          <Controls.MyButton value="outlined" type="reset" text="Reset" />
+          <Controls.MyButton
+            variant="outlined"
+            value="outlined"
+            type="reset"
+            text="Reset"
+          />
         </div>
       </Form>
     </React.Fragment>

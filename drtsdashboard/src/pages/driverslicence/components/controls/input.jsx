@@ -12,6 +12,7 @@ export default function Input(props) {
       value={value}
       onChange={handleInput}
       {...others}
+     
     />
   );
 }
