@@ -23,7 +23,7 @@ export function insertLicense(data) {
   data["id"] = generateLicenseId();
   licenses.push(data);
   localStorage.setItem(KEYS.licenses.JSON.stringify(licenses));
-} 
+}
 
 export function generateLicenseId() {
   if (localStorage.getItem(KEYS.licenseID) == null) {
