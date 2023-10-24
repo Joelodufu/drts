@@ -81,7 +81,7 @@ const simulateApiCall = () => {
   });
 };
 
-const getApplicants = async () => {
+export const getApplicants = async () => {
   try {
     const response = await simulateApiCall();
     return response.data;
@@ -91,28 +91,29 @@ const getApplicants = async () => {
 };
 
 export async function bookTestForUser(userId, bookingDetails) {
-  try {
-    // Send a POST request to your API or server with the user ID and booking details
-    // You can use a library like axios or the native fetch API for this purpose
-    // Replace the URL with the actual endpoint to post the booking request
-    const response = await fetch("https://api.example.com/bookings", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ userId, bookingDetails }),
-    });
+  // try {
+  //   // Send a POST request to your API or server with the user ID and booking details
+  //   // You can use a library like axios or the native fetch API for this purpose
+  //   // Replace the URL with the actual endpoint to post the booking request
+  //   const response = await fetch("https://api.example.com/bookings", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({ userId, bookingDetails }),
+  //   });
 
-    if (!response.ok) {
-      throw new Error("Failed to book the test.");
-    }
+  //   if (!response.ok) {
+  //     throw new Error("Failed to book the test.");
+  //   }
 
-    // Handle the response and return data if necessary
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error booking test:", error);
-    throw error;
-  }
+  //   // Handle the response and return data if necessary
+  //   const data = await response.json();
+  //   return data;
+  // } catch (error) {
+  //   console.error("Error booking test:", error);
+  //   throw error;
+  // }
+
+  console.log({ userId: bookingDetails });
 }
-export default getApplicants;

@@ -23,7 +23,7 @@ import {
   InputLabel,
 } from "@mui/material";
 import { Search } from "@mui/icons-material";
-import getApplicants from "../applicantsService";
+import { getApplicants, bookTestForUser } from "../applicantsService";
 
 const columns = ["fullName", "licenseType", "dateofBirth", "email"];
 const columnLabels = ["Full Name", "License Type", "Date of Birth", "Email"];
@@ -68,9 +68,16 @@ const ApplicantTable = () => {
     setIsBookingDialogOpen(false);
   };
 
-  const handleBooking = () => {
-    // Add logic to book the test with the selected data
-    handleBookingDialogClose();
+  const handleBooking = async () => {
+    try {
+      const userId = selectedApplicant.id; // Replace 'id' with the actual user ID field
+      await bookTestForUser(userId, bookingData);
+      handleBookingDialogClose();
+      // Optionally, you can perform any actions after a successful booking.
+    } catch (error) {
+      // Handle any errors that may occur during booking.
+      console.error("Failed to book the test:", error);
+    }
   };
 
   useEffect(() => {
