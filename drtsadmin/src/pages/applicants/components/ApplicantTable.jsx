@@ -17,13 +17,16 @@ import {
   DialogActions,
   Grid,
   Typography,
-  Box, // Import Box for styling
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
 } from "@mui/material";
 import { Search } from "@mui/icons-material";
 import getApplicants from "../applicantsService";
 
 const columns = ["fullName", "licenseType", "dateofBirth", "email"];
-const columnLabels = ["Full Name", "License Type", "Date Of Birth", "Email"];
+const columnLabels = ["Full Name", "License Type", "Date of Birth", "Email"];
 
 const ApplicantTable = () => {
   const [applicants, setApplicants] = useState([]);
@@ -34,6 +37,13 @@ const ApplicantTable = () => {
   const [order, setOrder] = useState("asc");
   const [search, setSearch] = useState("");
   const [selectedApplicant, setSelectedApplicant] = useState(null);
+  const [bookingData, setBookingData] = useState({
+    accessor: "",
+    location: "",
+    date: "",
+    time: "",
+  });
+  const [isBookingDialogOpen, setIsBookingDialogOpen] = useState(false);
 
   const handleChangePage = (_, newPage) => {
     setPage(newPage);
@@ -48,6 +58,19 @@ const ApplicantTable = () => {
     const isAsc = orderBy === property && order === "asc";
     setOrderBy(property);
     setOrder(isAsc ? "desc" : "asc");
+  };
+
+  const handleBookingDialogOpen = () => {
+    setIsBookingDialogOpen(true);
+  };
+
+  const handleBookingDialogClose = () => {
+    setIsBookingDialogOpen(false);
+  };
+
+  const handleBooking = () => {
+    // Add logic to book the test with the selected data
+    handleBookingDialogClose();
   };
 
   useEffect(() => {
@@ -80,20 +103,6 @@ const ApplicantTable = () => {
       value.toString().toLowerCase().includes(search.toLowerCase())
     )
   );
-
-  const handleApproveApplication = () => {
-    // Add your logic to approve the application here
-    // You can make an API call or perform any other necessary action
-    // Then, close the dialog
-    setSelectedApplicant(null);
-  };
-
-  const handleDisapproveApplication = () => {
-    // Add your logic to disapprove the application here
-    // You can make an API call or perform any other necessary action
-    // Then, close the dialog
-    setSelectedApplicant(null);
-  };
 
   return (
     <Paper>
@@ -184,33 +193,72 @@ const ApplicantTable = () => {
               ))}
             </Grid>
           )}
-          <Box
-            display="flex"
-            justifyContent="flex-end"
-            alignItems="center"
-            marginTop="16px"
-            marginRight="16px"
-          >
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={handleApproveApplication}
-              style={{ marginRight: "16px" }}
-            >
-              Approve
-            </Button>
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={handleDisapproveApplication}
-            >
-              Disapprove
-            </Button>
-          </Box>
         </DialogContent>
         <DialogActions>
+          <Button
+            variant="outlined"
+            color="primary"
+            onClick={handleBookingDialogOpen}
+          >
+            Book Test
+          </Button>
           <Button onClick={() => setSelectedApplicant(null)} color="primary">
-            Close
+            Disapprove
+          </Button>
+        </DialogActions>
+      </Dialog>
+      <Dialog open={isBookingDialogOpen} onClose={handleBookingDialogClose}>
+        <DialogTitle>Book Test</DialogTitle>
+        <DialogContent>
+          <FormControl fullWidth margin="normal">
+            <InputLabel>Select Accessor</InputLabel>
+            <Select
+              value={bookingData.accessor}
+              onChange={(e) =>
+                setBookingData({ ...bookingData, accessor: e.target.value })
+              }
+            >
+              {/* Add options for Accessor selection */}
+            </Select>
+          </FormControl>
+          <FormControl fullWidth margin="normal">
+            <InputLabel>Select Location</InputLabel>
+            <Select
+              value={bookingData.location}
+              onChange={(e) =>
+                setBookingData({ ...bookingData, location: e.target.value })
+              }
+            >
+              {/* Add options for Location selection */}
+            </Select>
+          </FormControl>
+          <FormControl fullWidth margin="normal">
+            <InputLabel>Select Date</InputLabel>
+            <input
+              type="date"
+              value={bookingData.date}
+              onChange={(e) =>
+                setBookingData({ ...bookingData, date: e.target.value })
+              }
+            />
+          </FormControl>
+          <FormControl fullWidth margin="normal">
+            <InputLabel>Select Time</InputLabel>
+            <input
+              type="time"
+              value={bookingData.time}
+              onChange={(e) =>
+                setBookingData({ ...bookingData, time: e.target.value })
+              }
+            />
+          </FormControl>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleBooking} color="primary">
+            Book
+          </Button>
+          <Button onClick={handleBookingDialogClose} color="primary">
+            Cancel
           </Button>
         </DialogActions>
       </Dialog>
