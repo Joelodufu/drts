@@ -9,7 +9,6 @@ import SignUp from "./pages/signup";
 import SignIn from "./pages/signin";
 import DriversLicence from "./pages/driverslicence";
 
-
 export default function App() {
   return (
     <>

@@ -1,33 +1,38 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const schoolROute = require("./routes/schools/school");
-const LiceseRoute = require("./routes/license/applicants");
+const schoolRoute = require("./routes/schools/school");
+const LicenseRoute = require("./routes/license/applicants");
 require("dotenv").config();
 const cors = require("cors");
+const morgan = require("morgan"); // Import Morgan
 
-//express app
+// Express app
 const app = express();
 
-//middlewares
+// Middleware
 app.use(cors());
-
 app.use(express.json());
+
+// Logging middleware
+app.use(morgan("dev")); // Use Morgan in "dev" format
+
+// Your existing middleware for request logging
 app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
 });
 
-//Routes
-app.use("/api/schools", schoolROute);
-app.use("/api/license", LiceseRoute);
+// Routes
+app.use("/api/schools", schoolRoute);
+app.use("/api/license", LicenseRoute);
 const port = 5000;
 
-//connect to database
+// Connect to the database
 mongoose
   .connect(process.env.MONGO_URL)
   .then(() => {
     app.listen(port, () =>
-      console.log(`Connected to the databse and listening on port${port}`)
+      console.log(`Connected to the database and listening on port ${port}`)
     );
   })
   .catch((error) => {

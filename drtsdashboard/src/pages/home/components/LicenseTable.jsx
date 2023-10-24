@@ -22,6 +22,9 @@ import {
   MenuItem,
 } from "@mui/material";
 import { Search } from "@mui/icons-material";
+import { postLicenseApplication } from "./licenseService";
+import FileUpload from "./fileUpload";
+import DocumentUploader from "./../../driverslicence/components/documentUploadForm";
 
 const columns = ["licenseType", "Expiry", "action"];
 const columnLabels = ["License Type", "Expiry Date", "Renew Action"];
@@ -40,7 +43,7 @@ const LicenseTable = () => {
 
   const [newLicenseForm, setNewLicenseForm] = useState({
     fullName: "",
-    dateofBirth: "",
+    dateofBirth: new Date(),
     gender: "male",
     nationality: "",
     bloodGroup: "",
@@ -49,10 +52,28 @@ const LicenseTable = () => {
     phoneNumber: "",
     email: "",
     nextOfKinsAddress: "",
-    proccessingCenter: "",
+    processingCenter: "",
     licenseType: "",
     paymentMethod: "",
   });
+
+  const [showFileUploadDialog, setShowFileUploadDialog] = useState(false);
+
+  // const handleApplyForNewLicenseDialogClose = async () => {
+  //   setApplyForNewLicenseDialogOpen(false);
+  //   setShowFileUploadDialog(true); // Show the file upload dialog
+  // };
+
+  const handleFileUploadDialogClose = () => {
+    setShowFileUploadDialog(false);
+  };
+
+  const handleDocumentsUploaded = (documentUrls) => {
+    // Handle the document URLs and send a PATCH request to the server
+    console.log("Document URLs:", documentUrls);
+    // Perform any additional actions here
+    setShowFileUploadDialog(false);
+  };
 
   const handleChangePage = (_, newPage) => {
     setPage(newPage);
@@ -96,8 +117,16 @@ const LicenseTable = () => {
     setApplyForNewLicenseDialogOpen(true);
   };
 
-  const handleApplyForNewLicenseDialogClose = () => {
+  const handleApplyForNewLicenseDialogClose = async () => {
     setApplyForNewLicenseDialogOpen(false);
+    // Call the postLicenseApplication function to submit the form data
+    try {
+      const response = await postLicenseApplication(newLicenseForm);
+      console.log("License application submitted successfully:", response);
+    } catch (error) {
+      // Handle errors
+      console.error("Failed to submit license application:", error);
+    }
   };
 
   const handleFormChange = (e) => {
@@ -105,6 +134,13 @@ const LicenseTable = () => {
     setNewLicenseForm({
       ...newLicenseForm,
       [name]: value,
+    });
+  };
+
+  const handleDateOfBirthChange = (date) => {
+    setNewLicenseForm({
+      ...newLicenseForm,
+      dateofBirth: date,
     });
   };
 
@@ -223,6 +259,7 @@ const LicenseTable = () => {
           <TextField
             fullWidth
             label="Date of Birth"
+            type="date"
             name="dateofBirth"
             value={newLicenseForm.dateofBirth}
             onChange={handleFormChange}
@@ -239,7 +276,102 @@ const LicenseTable = () => {
               <MenuItem value="other">Other</MenuItem>
             </Select>
           </FormControl>
-          {/* Add the rest of the form fields here */}
+          <TextField
+            fullWidth
+            label="Nationality"
+            name="nationality"
+            value={newLicenseForm.nationality}
+            onChange={handleFormChange}
+          />
+          <FormControl fullWidth>
+            <InputLabel>Blood Group</InputLabel>
+            <Select
+              name="bloodGroup"
+              value={newLicenseForm.bloodGroup}
+              onChange={handleFormChange}
+            >
+              <MenuItem value="A+">A+</MenuItem>
+              <MenuItem value="A-">A-</MenuItem>
+              <MenuItem value="B+">B+</MenuItem>
+              <MenuItem value="B-">B-</MenuItem>
+              <MenuItem value="AB+">AB+</MenuItem>
+              <MenuItem value="AB-">AB-</MenuItem>
+              <MenuItem value="O+">O+</MenuItem>
+              <MenuItem value="O-">O-</MenuItem>
+            </Select>
+          </FormControl>
+          <TextField
+            fullWidth
+            label="National ID Number"
+            name="nationalIDNumber"
+            value={newLicenseForm.nationalIDNumber}
+            onChange={handleFormChange}
+          />
+          <TextField
+            fullWidth
+            label="Address"
+            name="address"
+            value={newLicenseForm.address}
+            onChange={handleFormChange}
+          />
+          <TextField
+            fullWidth
+            label="Phone Number"
+            name="phoneNumber"
+            value={newLicenseForm.phoneNumber}
+            onChange={handleFormChange}
+          />
+          <TextField
+            fullWidth
+            label="Email Address"
+            name="email"
+            value={newLicenseForm.email}
+            onChange={handleFormChange}
+          />
+          <TextField
+            fullWidth
+            label="Next of Kin Address"
+            name="nextOfKinsAddress"
+            value={newLicenseForm.nextOfKinsAddress}
+            onChange={handleFormChange}
+          />
+          <FormControl fullWidth>
+            <InputLabel>Processing Center</InputLabel>
+            <Select
+              name="processingCenter"
+              value={newLicenseForm.processingCenter}
+              onChange={handleFormChange}
+            >
+              <MenuItem value="Center A">Center A</MenuItem>
+              <MenuItem value="Center B">Center B</MenuItem>
+              <MenuItem value="Center C">Center C</MenuItem>
+            </Select>
+          </FormControl>
+          <FormControl fullWidth>
+            <InputLabel>License Type</InputLabel>
+            <Select
+              name="licenseType"
+              value={newLicenseForm.licenseType}
+              onChange={handleFormChange}
+            >
+              <MenuItem value="motorcycle">Motorcycle</MenuItem>
+              <MenuItem value="car">Car</MenuItem>
+              <MenuItem value="truck">Truck</MenuItem>
+            </Select>
+          </FormControl>
+          <FormControl fullWidth>
+            <InputLabel>Payment Method</InputLabel>
+            <Select
+              name="paymentMethod"
+              value={newLicenseForm.paymentMethod}
+              onChange={handleFormChange}
+            >
+              <MenuItem value="RRR">RRR</MenuItem>
+              <MenuItem value="Bank">Bank</MenuItem>
+              <MenuItem value="Card">Card</MenuItem>
+            </Select>
+          </FormControl>
+          <DocumentUploader />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleApplyForNewLicenseDialogClose} color="primary">
@@ -247,6 +379,18 @@ const LicenseTable = () => {
           </Button>
           <Button onClick={handleApplyForNewLicenseDialogClose} color="primary">
             Submit
+          </Button>
+        </DialogActions>
+      </Dialog>
+      <Dialog open={showFileUploadDialog} onClose={handleFileUploadDialogClose}>
+        <DialogTitle>Upload Documents</DialogTitle>
+        <DialogContent>
+          {/* Render the FileUpload component here and pass the callback function */}
+          <FileUpload onDocumentsUploaded={handleDocumentsUploaded} />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleFileUploadDialogClose} color="primary">
+            Cancel
           </Button>
         </DialogActions>
       </Dialog>
