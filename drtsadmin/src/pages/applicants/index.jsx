@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import NavBar from "../../components/NavBar";
 import Box from "@mui/material/Box";
-import StickyHeadTable from "./components/applicantsTable";
+import ApplicantTable from "./components/ApplicantTable";
 
 function Applications() {
   return (
     <>
       <Box sx={{ display: "flex" }}>
         <NavBar />
-        <StickyHeadTable />
-        <Box component="main" sx={{ flexGrow: 1, p: 3 }}></Box>
+        <ApplicantTable />
       </Box>
     </>
   );

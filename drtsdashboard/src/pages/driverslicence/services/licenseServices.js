@@ -1,3 +1,8 @@
+import config from "../../../service/config";
+import axios from "axios";
+
+const API_URL = config.BASE_URL;
+
 const KEYS = {
   licenses: "licenses",
   licenseID: "licenceID",
@@ -39,3 +44,13 @@ export function getAllLicenses() {
   }
   return JSON.parse(localStorage.getItem(KEYS.licenses));
 }
+
+export const submitForm = async (formData) => {
+  try {
+    const response = await axios.post(`${API_URL}/license`, formData);
+    console.log(response.data);
+    return response.data; // You can handle the response as needed
+  } catch (error) {
+    throw error; // You can handle errors as needed
+  }
+};

@@ -3,11 +3,13 @@ const mongoose = require("mongoose");
 const schoolROute = require("./routes/schools/school");
 const LiceseRoute = require("./routes/license/applicants");
 require("dotenv").config();
+const cors = require("cors");
 
 //express app
 const app = express();
 
 //middlewares
+app.use(cors());
 
 app.use(express.json());
 app.use((req, res, next) => {

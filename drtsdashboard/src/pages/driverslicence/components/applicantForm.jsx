@@ -42,18 +42,23 @@ const ApplicantForm = () => {
 
   const [formData, setFormData] = useState({
     fullName: "",
-    dateOfBirth: "",
+    dateofBirth: "",
     gender: "male",
     nationality: "",
     bloodGroup: "",
-    nationalID: "",
+    nationalIDNumber: "",
     address: "",
     phoneNumber: "",
     email: "",
     nextOfKinsAddress: "",
-    processingCenter: "",
+    proccessingCenter: "",
     licenseType: "",
     paymentMethod: "",
+    passport: "",
+    legalID: "",
+    proofOfAddress: "",
+    eyeTestCeritificate: "",
+    driversPermit: "",
   });
 
   const handleInputChange = (e) => {
@@ -63,25 +68,32 @@ const ApplicantForm = () => {
 
   const handleSubmit = () => {
     // Log the form data to the console
-    console.log(formData);
+    const data = JSON.stringify(formData);
+    console.log(data);
+    licenseServices.submitForm(data);
   };
 
   const handleReset = () => {
     // Reset the form data
     setFormData({
       fullName: "",
-      dateOfBirth: "",
+      dateofBirth: "",
       gender: "male",
       nationality: "",
       bloodGroup: "",
-      nationalID: "",
+      nationalIDNumber: "",
       address: "",
       phoneNumber: "",
       email: "",
       nextOfKinsAddress: "",
-      processingCenter: "",
+      proccessingCenter: "",
       licenseType: "",
       paymentMethod: "",
+      passport: "",
+      legalID: "",
+      proofOfAddress: "",
+      eyeTestCeritificate: "",
+      driversPermit: "",
     });
   };
 
@@ -101,9 +113,9 @@ const ApplicantForm = () => {
             <FormControl className={classes.root} fullWidth>
               <TextField
                 label="Date of Birth"
-                name="dateOfBirth"
+                name="dateofBirth"
                 type="date"
-                value={formData.dateOfBirth}
+                value={formData.dateofBirth}
                 onChange={handleInputChange}
               />
             </FormControl>
@@ -145,8 +157,8 @@ const ApplicantForm = () => {
             <FormControl className={classes.root} fullWidth>
               <TextField
                 label="National ID Number"
-                name="nationalID"
-                value={formData.nationalID}
+                name="nationalIDNumber"
+                value={formData.nationalIDNumber}
                 onChange={handleInputChange}
               />
             </FormControl>{" "}
@@ -187,9 +199,9 @@ const ApplicantForm = () => {
             <FormControl className={classes.root} fullWidth>
               <InputLabel>Processing Center</InputLabel>
               <Select
-                name="processingCenter"
+                name="proccessingCenter"
                 label="Processing Center"
-                value={formData.processingCenter}
+                value={formData.proccessingCenter}
                 onChange={handleInputChange}
               >
                 {licenseServices.getLicenseCenters().map((item) => (
