@@ -24,14 +24,16 @@ const getAccessor = async (req, res) => {
 
 //create accessor
 const createAccessor = async (req, res) => {
-  const { name, address, accreditionNumber, image } = req.body;
+  const { name, activStatus,phone, email, address, image } = req.body;
 
   //add to db
   try {
     const accessor = await Accessor.create({
       name,
+      activStatus,
+      phone,
+      email,
       address,
-      accreditionNumber,
       image,
     });
     res.status(200).json(accessor);
@@ -47,12 +49,11 @@ const createAccessor = async (req, res) => {
 const creatBatch = (req, res) => {
   const allAccessor = [];
   const { accessors } = req.body;
-  accessors.forEach(async ({ name, address, accreditionNumber, image }) => {
+  accessors.forEach(async ({  name, activStatus,phone, email, address, image }) => {
     try {
       const accessor = await Accessor.create({
         name,
-        address,
-        accreditionNumber,
+        activStatus,
         image,
       });
       allAccessor.push(accessor);
@@ -69,7 +70,7 @@ const creatBatch = (req, res) => {
 // Update accessor
 const updateAccessor = async (req, res) => {
   const { id } = req.params;
-  const { name, address, accreditionNumber, image } = req.body;
+  const {  name, activStatus,phone, email, address, image } = req.body;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({ error: "No such accessor" });

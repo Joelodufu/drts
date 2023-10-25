@@ -2,29 +2,35 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const accessorSchema = new Schema(
+const testScheduleSchema = new Schema(
   {
-    name: {
+    applicantId: {
+      //applicantID
       type: String,
       required: true,
     },
-    activStatus: {
+    date: {
+      //date of the test
       type: String,
       required: true,
     },
-    phone: {
+    time: {
+      //time of the test
       type: String,
       required: true,
     },
-    email: {
+    location: {
+      //location of the test
       type: String,
       required: true,
     },
-    address: {
+    accessorId: {
+      //id of the accessor
       type: String,
       required: true,
     },
-    image: {
+    testStatus: {
+      //awaiting, passed, failed, missed
       type: String,
       required: false,
     },
@@ -34,4 +40,4 @@ const accessorSchema = new Schema(
   }
 );
 
-module.exports = mongoose.model("Accessor", accessorSchema);
+module.exports = mongoose.model("TestSchedule", testScheduleSchema);
