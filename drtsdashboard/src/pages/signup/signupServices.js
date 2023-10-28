@@ -10,7 +10,7 @@ export async function submitSignupForm(data) {
       body: JSON.stringify(data),
     });
 
-    if (response.status === 200) {
+    if (response.status === 201) {
       return true; // Success
     } else {
       return false; // Error

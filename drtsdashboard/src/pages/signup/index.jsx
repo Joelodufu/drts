@@ -27,7 +27,8 @@ export default function SignUp() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    const form = event.target;
+    const data = new FormData(form);
     const userData = {
       firstName: data.get("firstName"),
       lastName: data.get("lastName"),
@@ -38,6 +39,9 @@ export default function SignUp() {
     const isSuccess = await submitSignupForm(userData);
 
     if (isSuccess) {
+      // Clear the form fields
+      form.reset();
+
       setFormData(userData);
       setSuccess(true);
       // Redirect to the "/signin" route after a successful registration.
@@ -68,7 +72,12 @@ export default function SignUp() {
             <img src="logo-ct.png" alt="" />
           </div>
           <Typography>Sign up</Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Box
+            component="form"
+            noValidate
+            onSubmit={handleSubmit}
+            sx={{ mt: 3 }}
+          >
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -114,19 +123,32 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12}>
                 <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
+                  control={
+                    <Checkbox value="allowExtraEmails" color="primary" />
+                  }
                   label="I want to receive inspiration, marketing promotions and updates via email."
                 />
               </Grid>
             </Grid>
-            <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
               Sign Up
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
-                  Already have an account? Sign in
-                </Link>
+                <span
+                  onClick={() => {
+                    navigate("/signin");
+                  }}
+                >
+                  <Link href="#" variant="body2">
+                    {"Already have an account? Signin"}
+                  </Link>
+                </span>
               </Grid>
             </Grid>
           </Box>
@@ -134,7 +156,12 @@ export default function SignUp() {
       </Container>
       {/* Success Popup */}
       <Snackbar open={success} autoHideDuration={6000} onClose={handleClose}>
-        <MuiAlert elevation={6} variant="filled" onClose={handleClose} severity="success">
+        <MuiAlert
+          elevation={6}
+          variant="filled"
+          onClose={handleClose}
+          severity="success"
+        >
           Registration successful for {formData.firstName} {formData.lastName}!
         </MuiAlert>
       </Snackbar>

@@ -1,5 +1,4 @@
-import * as React from "react";
-import Avatar from "@mui/material/Avatar";
+import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
@@ -13,21 +12,34 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
-
-// TODO remove, this demo shouldn't need to reset the theme.
+import { submitSignInForm } from "./signinServices"; // Import the modified submitSignInForm function
 
 const defaultTheme = createTheme();
 
 export default function SignIn() {
-  const handleSubmit = (event) => {
+  const [loginSuccess, setLoginSuccess] = useState(false);
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
+
+    const result = await submitSignInForm({
       email: data.get("email"),
       password: data.get("password"),
     });
+
+    if (result) {
+      setLoginSuccess(true);
+    } else {
+      // Handle login failure, show an error message, etc.
+    }
   };
+
   const navigate = useNavigate();
+
+  if (loginSuccess) {
+    navigate("/");
+  }
+
   return (
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
@@ -40,7 +52,9 @@ export default function SignIn() {
             alignItems: "center",
           }}
         >
-          <img src="logo-ct.png" alt="" />
+          <div className="img">
+            <img src="logo-ct.png" alt="" />
+          </div>
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
