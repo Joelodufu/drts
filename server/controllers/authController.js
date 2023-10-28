@@ -63,4 +63,29 @@ const login = async (req, res) => {
       .json({ message: "Authentication failed. An error occurred." });
   }
 };
-module.exports = { register, login };
+
+const getUserDetails = async (req, res) => {
+  try {
+    const userId = req.userId; // User ID extracted from the token in verifyToken middleware
+
+    // Retrieve user details based on the userId
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Send the user details as a response
+    res.status(200).json({
+      _id: user._id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      // Add more user details as needed
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Error while retrieving user details" });
+  }
+};
+
+module.exports = { register, login, getUserDetails };
