@@ -8,6 +8,7 @@ const {
   getApplicant,
   updateApplicant,
   deleteApplicant,
+  getApplicantsByUserId, // Import the new function
 } = require("../../controllers/applicantController");
 
 const filePath = path.join(__dirname, "../../Schools.json");
@@ -24,11 +25,14 @@ router.get("/:id", getApplicant);
 router.post("/", createApplicant);
 
 //Post Batch Applicants
-
 router.post("/batch", creatBatch);
+
+// Add a new route to get applicants by user ID
+router.get("/user/:userId", getApplicantsByUserId);
 
 //Delete an applicant
 router.delete("/:id", deleteApplicant);
+
 //Update an applicant
 router.patch("/:id", updateApplicant);
 

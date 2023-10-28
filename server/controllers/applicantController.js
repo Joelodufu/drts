@@ -22,11 +22,33 @@ const getApplicant = async (req, res) => {
   res.status(200).json(applicant);
 };
 
+
+//Get applicants by user ID
+const getApplicantsByUserId = async (req, res) => {
+  const { userId } = req.params; // Assuming the user ID is passed as a route parameter
+
+  if (!mongoose.Types.ObjectId.isValid(userId)) {
+    return res.status(404).json({ error: "Invalid user ID" });
+  }
+
+  try {
+    const applicants = await Applicant.find({ user: userId }).sort({
+      createdAt: -1,
+    });
+
+    res.status(200).json(applicants);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+
 //create applicant
 const createApplicant = async (req, res) => {
   const {
     fullName,
     dateofBirth,
+    user,
     gender,
     nationality,
     bloodGroup,
@@ -50,6 +72,7 @@ const createApplicant = async (req, res) => {
     const applicant = await Applicant.create({
       fullName,
       dateofBirth,
+      user,
       gender,
       nationality,
       bloodGroup,
@@ -84,6 +107,7 @@ const creatBatch = (req, res) => {
     async ({
       fullName,
       dateofBirth,
+      user,
       gender,
       nationality,
       bloodGroup,
@@ -105,6 +129,7 @@ const creatBatch = (req, res) => {
         const applicant = await Applicant.create({
           fullName,
           dateofBirth,
+          user,
           gender,
           nationality,
           bloodGroup,
@@ -140,6 +165,7 @@ const updateApplicant = async (req, res) => {
   const {
     fullName,
     dateofBirth,
+    user,
     gender,
     nationality,
     bloodGroup,
@@ -201,6 +227,7 @@ const deleteApplicant = async (req, res) => {
 
 module.exports = {
   createApplicant,
+  getApplicantsByUserId,
   creatBatch,
   getApplicants,
   getApplicant,

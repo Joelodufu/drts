@@ -4,6 +4,8 @@ const schoolRoute = require("./routes/schools/school");
 const LicenseRoute = require("./routes/license/applicants");
 const AccessorRoute = require("./routes/accessors/accessors");
 const TestScheduleRoute = require("./routes/testSchedule/testSchedule");
+const AuthRoute = require("./routes/authRoute");
+const UserRoute = require("./routes/users/users");
 require("dotenv").config();
 const cors = require("cors");
 const morgan = require("morgan"); // Import Morgan
@@ -29,6 +31,8 @@ app.use("/api/schools", schoolRoute);
 app.use("/api/license", LicenseRoute);
 app.use("/api/accessors", AccessorRoute);
 app.use("/api/testSchedules", TestScheduleRoute);
+app.use("/api/auth", AuthRoute);
+app.use("/api/users",UserRoute);
 const port = 5000;
 
 // Connect to the database

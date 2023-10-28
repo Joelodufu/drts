@@ -1,35 +1,20 @@
 const express = require("express");
-const path = require("path");
 
 const {
-  createUser,
-  creatBatch,
   getUsers,
   getUser,
-  updateUser,
   deleteUser,
-} = require("../../controllers/applicantController");
-
-const filePath = path.join(__dirname, "../../Schools.json");
+} = require("../../controllers/usersController");
 
 const router = express.Router();
 
-//get all applicants
+//get all Users
 router.get("/", getUsers);
 
-//Get Single applicant
+//Get Single User
 router.get("/:id", getUser);
 
-//POST a new applicant
-router.post("/", createUser);
-
-//Post Batch Users
-
-router.post("/batch", creatBatch);
-
-//Delete an applicant
+//Delete an User
 router.delete("/:id", deleteUser);
-//Update an applicant
-router.patch("/:id", updateUser);
 
 module.exports = router;
