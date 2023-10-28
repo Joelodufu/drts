@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 
 const register = async (req, res) => {
   try {
-    const { username, email, password } = req.body;
+    const { firstName, lastName, email, password } = req.body;
 
     // Check if the email already exists
     const existingUser = await User.findOne({ email });
@@ -16,7 +16,12 @@ const register = async (req, res) => {
     // Validate input
     // Hash the password using bcryptjs
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new User({ username, email, password: hashedPassword });
+    const user = new User({
+      firstName,
+      lastName,
+      email,
+      password: hashedPassword,
+    });
     await user.save();
     res.status(201).json({ message: "User registered successfully" });
   } catch (error) {
@@ -51,13 +56,11 @@ const login = async (req, res) => {
       expiresIn: "1h",
     });
 
-    res.status(200).json({ email,token });
+    res.status(200).json({ email, token });
   } catch (error) {
     res
       .status(500)
       .json({ message: "Authentication failed. An error occurred." });
   }
 };
-;
-
 module.exports = { register, login };
