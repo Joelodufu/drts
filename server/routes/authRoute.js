@@ -13,7 +13,7 @@ const verifyToken = (req, res, next) => {
   }
 
   // Verify and decode the token
-  jwt.verify(token, "your_secret_key", (err, decoded) => {
+  jwt.verify(token, process.env.SECRET, (err, decoded) => {
     if (err) {
       return res.status(401).json({ message: "Failed to authenticate token" });
     }

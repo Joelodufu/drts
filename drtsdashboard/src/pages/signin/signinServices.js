@@ -1,4 +1,3 @@
-// signinServices.js
 export async function submitSignInForm(data) {
   try {
     const response = await fetch("http://localhost:5000/api/auth/login", {
@@ -15,6 +14,23 @@ export async function submitSignInForm(data) {
 
       // Store the token in local storage
       localStorage.setItem("token", token);
+
+      // Fetch user details using the token
+      const userResponse = await fetch(
+        "http://localhost:5000/api/auth/user-details",
+        {
+          method: "GET",
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+
+      if (userResponse.status === 200) {
+        const user = await userResponse.json();
+        // Store the user details in local storage
+        localStorage.setItem("user", JSON.stringify(user));
+      }
 
       return true; // Login success
     } else {
