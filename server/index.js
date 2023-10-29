@@ -33,14 +33,15 @@ app.use("/api/accessors", AccessorRoute);
 app.use("/api/testSchedules", TestScheduleRoute);
 app.use("/api/auth", AuthRoute);
 app.use("/api/users",UserRoute);
-const port = 5000;
 
 // Connect to the database
 mongoose
   .connect(process.env.MONGO_URL)
   .then(() => {
-    app.listen(port, () =>
-      console.log(`Connected to the database and listening on port ${port}`)
+    app.listen(process.env.PORT, () =>
+      console.log(
+        `Connected to the database and listening on port ${process.env.PORT}`
+      )
     );
   })
   .catch((error) => {

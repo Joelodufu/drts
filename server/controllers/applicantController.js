@@ -22,7 +22,6 @@ const getApplicant = async (req, res) => {
   res.status(200).json(applicant);
 };
 
-
 //Get applicants by user ID
 const getApplicantsByUserId = async (req, res) => {
   const { userId } = req.params; // Assuming the user ID is passed as a route parameter
@@ -41,7 +40,6 @@ const getApplicantsByUserId = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-
 
 //create applicant
 const createApplicant = async (req, res) => {

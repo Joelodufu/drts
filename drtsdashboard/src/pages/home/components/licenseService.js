@@ -2,7 +2,7 @@
 
 // A mock URL for the license service API. Replace this with your actual backend API URL.
 const API_URL = "http://localhost:5000/api";
-
+import BASE_URL from '../../../service/config'
 // Function to post the form input to the backend
 export const postLicenseApplication = async (licenseData) => {
   try {
@@ -10,6 +10,7 @@ export const postLicenseApplication = async (licenseData) => {
     const requiredFields = [
       "fullName",
       "dateofBirth",
+      "user",
       "gender",
       "nationality",
       "bloodGroup",
@@ -34,15 +35,20 @@ export const postLicenseApplication = async (licenseData) => {
       return data;
     }, {});
 
-    const response = await fetch(`${API_URL}/license`, {
+    const jsonData = JSON.stringify(requestData);
+
+    const response = await fetch(`${BASE_URL}/license`, {
       method: "POST",
-      body: JSON.stringify(requestData),
+      body: jsonData,
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
 
     if (!response.ok) {
       // Handle errors, e.g., by throwing an exception or returning an error message
       throw new Error(
-        `Failed to post license application: ${response.statusText}`
+        `2222Failed to post license application: ${response.statusText}`
       );
     }
 
@@ -51,7 +57,7 @@ export const postLicenseApplication = async (licenseData) => {
     return await response.json();
   } catch (error) {
     // Handle errors, e.g., by logging or returning an error message
-    console.error("Failed to post license application:", error);
+    console.error("1111Failed to post license application:", error);
     throw error;
   }
 };

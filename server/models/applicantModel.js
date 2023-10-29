@@ -37,7 +37,6 @@ const applicantSchema = new Schema(
     },
     email: {
       type: String,
-      required: false,
     },
     nextOfKinsAddress: {
       type: String,

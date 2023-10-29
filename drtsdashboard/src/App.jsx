@@ -8,7 +8,6 @@ import Profile from "./pages/profile";
 import SignUp from "./pages/signup";
 import SignIn from "./pages/signin";
 import DriversLicence from "./pages/driverslicence";
-
 export default function App() {
   return (
     <>
@@ -17,7 +16,7 @@ export default function App() {
           <Route path="/signin" exact element={<SignIn />}></Route>
           <Route path="/" exact element={<HomePage />}></Route>
           <Route path="/applications" exact element={<Applications />}></Route>
-          <Route path="/license" exact element={<DriversLicence />}></Route>
+          <Route path="/license" exact element={<HomePage />}></Route>
           <Route path="/school" exact element={<DrivingSchoolPage />}></Route>
           <Route path="/test" exact element={<DrivingTestPage />}></Route>
           <Route path="/profile" exact element={<Profile />}></Route>

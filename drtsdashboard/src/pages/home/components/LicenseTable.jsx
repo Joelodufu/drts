@@ -25,6 +25,7 @@ import { Search } from "@mui/icons-material";
 import { postLicenseApplication } from "./licenseService";
 import FileUpload from "./fileUpload";
 import DocumentUploader from "./../../driverslicence/components/documentUploadForm";
+const user = JSON.parse(localStorage.getItem("user"));
 
 const columns = ["licenseType", "Expiry", "action"];
 const columnLabels = ["License Type", "Expiry Date", "Renew Action"];
@@ -44,6 +45,7 @@ const LicenseTable = () => {
   const [newLicenseForm, setNewLicenseForm] = useState({
     fullName: "",
     dateofBirth: new Date(),
+    user: user._id,
     gender: "male",
     nationality: "",
     bloodGroup: "",
@@ -86,7 +88,13 @@ const LicenseTable = () => {
   };
 
   function generateDummyLicenses() {
-    const licenseTypes = ["motorcycle", "car", "truck"];
+    const licenseTypes = [
+      "Type A (Motorcycle)",
+      "Type B (Tricycle)",
+      "Type C (Cars)",
+      "Type D (Trucks)",
+      "Type E (Heavy Machines)",
+    ];
     const licenses = [];
     for (let i = 1; i <= 50; i++) {
       const license = {
