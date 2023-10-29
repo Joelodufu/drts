@@ -9,6 +9,11 @@ const testScheduleSchema = new Schema(
       type: String,
       required: true,
     },
+    user: {
+      //applicantID
+      type: String,
+      required: true,
+    },
     date: {
       //date of the test
       type: String,

@@ -31,6 +31,7 @@ const createTestSchedule = async (req, res) => {
   try {
     const testSchedule = await TestSchedule.create({
       applicantId,
+      user,
       date,
       time,
       location,
