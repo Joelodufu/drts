@@ -23,7 +23,11 @@ import {
   InputLabel,
 } from "@mui/material";
 import { Search } from "@mui/icons-material";
-import { getApplicants, bookTestForUser } from "../applicantsService";
+import {
+  getApplicants,
+  bookTestForUser,
+  fetchAccessors,
+} from "../applicantsService";
 
 const columns = ["fullName", "licenseType", "dateofBirth", "email"];
 const columnLabels = ["Full Name", "License Type", "Date of Birth", "Email"];
@@ -38,13 +42,17 @@ const ApplicantTable = () => {
   const [search, setSearch] = useState("");
   const [selectedApplicant, setSelectedApplicant] = useState(null);
   const [bookingData, setBookingData] = useState({
-    accessor: "",
+    applicantId: "",
+    user: "",
+    accessorId: "",
     location: "",
     date: "",
     time: "",
+    testStatus: "",
   });
   const [isBookingDialogOpen, setIsBookingDialogOpen] = useState(false);
-
+  const [accessors, setAccessors] = useState([]); // State to store the list of accessors
+  const [selectedAccessor, setSelectedAccessor] = useState("");
   const handleChangePage = (_, newPage) => {
     setPage(newPage);
   };
@@ -87,7 +95,17 @@ const ApplicantTable = () => {
       }
     }
 
+    async function fetchAccessorsData() {
+      try {
+        const data = await fetchAccessors();
+        setAccessors(data);
+      } catch (error) {
+        console.error("Error fetching accessors:", error);
+      }
+    }
+
     fetchApplicants();
+    fetchAccessorsData();
   }, []);
 
   return (
@@ -213,12 +231,14 @@ const ApplicantTable = () => {
           <FormControl fullWidth margin="normal">
             <InputLabel>Select Accessor</InputLabel>
             <Select
-              value={bookingData.accessor}
-              onChange={(e) =>
-                setBookingData({ ...bookingData, accessor: e.target.value })
-              }
+              value={selectedAccessor} // Set the value to selectedAccessor
+              onChange={(e) => setSelectedAccessor(e.target.value)} // Update selectedAccessor
             >
-              {/* Add options for Accessor selection */}
+              {accessors.map((accessor) => (
+                <MenuItem key={accessor.id} value={accessor.name}>
+                  {accessor.name}
+                </MenuItem>
+              ))}
             </Select>
           </FormControl>
           <FormControl fullWidth margin="normal">
@@ -229,7 +249,9 @@ const ApplicantTable = () => {
                 setBookingData({ ...bookingData, location: e.target.value })
               }
             >
-              {/* Add options for Location selection */}
+              <MenuItem  >
+                VIO Office Abuja
+              </MenuItem>
             </Select>
           </FormControl>
           <FormControl fullWidth margin="normal">
