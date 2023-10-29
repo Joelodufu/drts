@@ -32,7 +32,7 @@ const ApplicantTable = () => {
   const [applicants, setApplicants] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [rowsPerPage] = useState(10);
   const [orderBy, setOrderBy] = useState(columns[0]);
   const [order, setOrder] = useState("asc");
   const [search, setSearch] = useState("");
@@ -47,11 +47,6 @@ const ApplicantTable = () => {
 
   const handleChangePage = (_, newPage) => {
     setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
   };
 
   const handleRequestSort = (property) => {
@@ -95,22 +90,6 @@ const ApplicantTable = () => {
     fetchApplicants();
   }, []);
 
-  const sortedData = applicants.slice().sort((a, b) => {
-    const aValue = a[orderBy];
-    const bValue = b[orderBy];
-    const compareValue = aValue.localeCompare(bValue, undefined, {
-      numeric: true,
-      sensitivity: "base",
-    });
-    return order === "asc" ? compareValue : -compareValue;
-  });
-
-  const filteredData = sortedData.filter((row) =>
-    Object.values(row).some((value) =>
-      value.toString().toLowerCase().includes(search.toLowerCase())
-    )
-  );
-
   return (
     <Paper>
       <Typography variant="h6" component="div" style={{ padding: "16px" }}>
@@ -150,35 +129,49 @@ const ApplicantTable = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {filteredData
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((row, index) => (
-                  <TableRow key={index}>
-                    {columns.map((column) => (
-                      <TableCell key={column}>{row[column]}</TableCell>
-                    ))}
-                    <TableCell>
-                      <Button
-                        variant="outlined"
-                        color="primary"
-                        onClick={() => setSelectedApplicant(row)}
-                      >
-                        View
-                      </Button>
-                    </TableCell>
-                  </TableRow>
-                ))}
+              {loading ? (
+                <TableRow>
+                  <TableCell colSpan={columns.length + 1}>Loading...</TableCell>
+                </TableRow>
+              ) : applicants.length === 0 ? (
+                <TableRow>
+                  <TableCell colSpan={columns.length + 1}>
+                    No applicants found.
+                  </TableCell>
+                </TableRow>
+              ) : (
+                applicants
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((row, index) => (
+                    <TableRow
+                      key={index}
+                      className={index % 2 === 0 ? "even-row" : "odd-row"}
+                    >
+                      {columns.map((column) => (
+                        <TableCell key={column}>{row[column]}</TableCell>
+                      ))}
+                      <TableCell>
+                        <Button
+                          variant="outlined"
+                          color="primary"
+                          onClick={() => setSelectedApplicant(row)}
+                        >
+                          View
+                        </Button>
+                      </TableCell>
+                    </TableRow>
+                  ))
+              )}
             </TableBody>
           </Table>
         </TableContainer>
         <TablePagination
           rowsPerPageOptions={[5, 10, 20]}
           component="div"
-          count={filteredData.length}
+          count={applicants.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onChangePage={handleChangePage}
-          onChangeRowsPerPage={handleChangeRowsPerPage}
         />
       </div>
       <Dialog

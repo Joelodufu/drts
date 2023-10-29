@@ -85,15 +85,23 @@ const simulateApiCall = () => {
 
 export async function getApplicants() {
   try {
-    // Replace 'https://api.example.com/applicants' with your API endpoint
-    const response = await fetch(`${BASE_URL}/api/license`);
+    const response = await fetch(
+      "https://drts-server.onrender.com/api/license"
+    );
 
     if (!response.ok) {
-      throw new Error("Failed to fetch applicants data.");
+      throw new Error(
+        `Failed to fetch applicants data. Status: ${response.status}`
+      );
     }
 
     const data = await response.json();
-    return data;
+    console.log(data);
+    if (Array.isArray(data)) {
+      return data; // Assuming the response is an array of objects
+    } else {
+      throw new Error("Invalid data format received from the server.");
+    }
   } catch (error) {
     console.error("Error fetching applicants:", error);
     throw error;
