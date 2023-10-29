@@ -22,6 +22,27 @@ const getTestSchedule = async (req, res) => {
   res.status(200).json(testSchedule);
 };
 
+//get schedules by user id
+
+//Get applicants by user ID
+const getTestScheduleByUserId = async (req, res) => {
+  const { userId } = req.params; // Assuming the user ID is passed as a route parameter
+
+  if (!mongoose.Types.ObjectId.isValid(userId)) {
+    return res.status(404).json({ error: "Invalid user ID" });
+  }
+
+  try {
+    const testSchedules = await TestSchedule.find({ user: userId }).sort({
+      createdAt: -1,
+    });
+
+    res.status(200).json(testSchedules);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 //create testSchedule
 const createTestSchedule = async (req, res) => {
   const { applicantId, user, date, time, location, accessorId, testStatus } =
@@ -136,5 +157,6 @@ module.exports = {
   getTestSchedules,
   getTestSchedule,
   updateTestSchedule,
+  getTestScheduleByUserId,
   deleteTestSchedule,
 };

@@ -20,6 +20,26 @@ export async function fetchAccessors() {
     throw error;
   }
 }
+export async function fetchLocations() {
+  try {
+    const response = await fetch(`${BASE_URL}/api/location`);
+    if (!response.ok) {
+      throw new Error(
+        `Failed to fetch accessors data. Status: ${response.status}`
+      );
+    }
+    const data = await response.json();
+    if (Array.isArray(data)) {
+      console.log(data);
+      return data;
+    } else {
+      throw new Error("Invalid data format received from the server.");
+    }
+  } catch (error) {
+    console.error("Error fetching accessors:", error);
+    throw error;
+  }
+}
 
 export async function getApplicants() {
   try {
@@ -44,6 +64,35 @@ export async function getApplicants() {
   }
 }
 
-export async function bookTestForUser(userId, bookingDetails) {
-  console.log({ userId: bookingDetails });
+export async function bookTestForUser(user, applicantId, bookingDetails) {
+  const requestData = {
+    user, // User ID
+    applicantId,
+    ...bookingDetails,
+  };
+  console.log(requestData);
+  try {
+    // Define the endpoint URL for booking tests
+
+    const response = await fetch(`${BASE_URL}/api/testSchedules`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json", // Set the appropriate content type
+      },
+      body: JSON.stringify(requestData),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to book the test. Status: ${response.status}`);
+    }
+
+    // Handle the response from the server, if needed
+    const data = await response.json();
+    // Optionally, you can perform actions with the response data
+
+    return data;
+  } catch (error) {
+    console.error("Failed to book the test:", error);
+    throw error;
+  }
 }

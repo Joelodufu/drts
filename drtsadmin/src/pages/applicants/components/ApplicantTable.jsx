@@ -27,6 +27,7 @@ import {
   getApplicants,
   bookTestForUser,
   fetchAccessors,
+  fetchLocations,
 } from "../applicantsService";
 
 const columns = ["fullName", "licenseType", "dateofBirth", "email"];
@@ -43,20 +44,28 @@ const ApplicantTable = () => {
   const [selectedApplicant, setSelectedApplicant] = useState(null);
   const [bookingData, setBookingData] = useState({
     applicantId: "",
-    user: "",
     accessorId: "",
     location: "",
     date: "",
     time: "",
-    testStatus: "",
+    testStatus: "awaiting",
   });
   const [isBookingDialogOpen, setIsBookingDialogOpen] = useState(false);
   const [accessors, setAccessors] = useState([]); // State to store the list of accessors
+  const [locations, setLocations] = useState([]); // State to store the list of location
   const [selectedAccessor, setSelectedAccessor] = useState("");
   const handleChangePage = (_, newPage) => {
     setPage(newPage);
   };
 
+  const addApplicationId = (row) => {
+    const appId = row._id;
+    setSelectedApplicant(row);
+    setBookingData({
+      ...bookingData,
+      applicantId: appId,
+    });
+  };
   const handleRequestSort = (property) => {
     const isAsc = orderBy === property && order === "asc";
     setOrderBy(property);
@@ -73,8 +82,10 @@ const ApplicantTable = () => {
 
   const handleBooking = async () => {
     try {
-      const userId = selectedApplicant.id; // Replace 'id' with the actual user ID field
-      await bookTestForUser(userId, bookingData);
+      const user = selectedApplicant.user;
+      const applicantId = selectedApplicant._id;
+      // Replace 'id' with the actual user ID field
+      await bookTestForUser(user, applicantId, bookingData);
       handleBookingDialogClose();
       // Optionally, you can perform any actions after a successful booking.
     } catch (error) {
@@ -103,9 +114,18 @@ const ApplicantTable = () => {
         console.error("Error fetching accessors:", error);
       }
     }
+    async function fetchLocationsData() {
+      try {
+        const data = await fetchLocations();
+        setLocations(data);
+      } catch (error) {
+        console.error("Error fetching accessors:", error);
+      }
+    }
 
     fetchApplicants();
     fetchAccessorsData();
+    fetchLocationsData();
   }, []);
 
   return (
@@ -172,7 +192,7 @@ const ApplicantTable = () => {
                         <Button
                           variant="outlined"
                           color="primary"
-                          onClick={() => setSelectedApplicant(row)}
+                          onClick={() => addApplicationId(row)}
                         >
                           View
                         </Button>
@@ -231,8 +251,10 @@ const ApplicantTable = () => {
           <FormControl fullWidth margin="normal">
             <InputLabel>Select Accessor</InputLabel>
             <Select
-              value={selectedAccessor} // Set the value to selectedAccessor
-              onChange={(e) => setSelectedAccessor(e.target.value)} // Update selectedAccessor
+              value={bookingData.accessorId} // Set the value to selectedAccessor
+              onChange={(e) =>
+                setBookingData({ ...bookingData, accessorId: e.target.value })
+              } // Update selectedAccessor
             >
               {accessors.map((accessor) => (
                 <MenuItem key={accessor.id} value={accessor.name}>
@@ -249,9 +271,11 @@ const ApplicantTable = () => {
                 setBookingData({ ...bookingData, location: e.target.value })
               }
             >
-              <MenuItem  >
-                VIO Office Abuja
-              </MenuItem>
+              {locations.map((location) => (
+                <MenuItem key={location.id} value={location.name}>
+                  {location.name}
+                </MenuItem>
+              ))}
             </Select>
           </FormControl>
           <FormControl fullWidth margin="normal">

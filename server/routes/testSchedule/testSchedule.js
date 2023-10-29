@@ -8,6 +8,7 @@ const {
   getTestSchedule,
   updateTestSchedule,
   deleteTestSchedule,
+  getTestScheduleByUserId,
 } = require("../../controllers/testShceduleController");
 
 const router = express.Router();
@@ -24,6 +25,9 @@ router.post("/", createTestSchedule);
 //Post Batch TestSchedules
 
 router.post("/batch", creatBatch);
+
+//get testSchedules by user ID
+router.get("/user/:userId", getTestScheduleByUserId);
 
 //Delete an testSchedule
 router.delete("/:id", deleteTestSchedule);
