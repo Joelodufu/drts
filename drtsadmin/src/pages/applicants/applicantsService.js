@@ -1,5 +1,5 @@
 // applicantService.js
-
+import BASE_URL from "../../services/confi";
 const africanNames = [
   "Kwame Appiah",
   "Nneka Eze",
@@ -86,20 +86,19 @@ const simulateApiCall = () => {
 export async function getApplicants() {
   try {
     // Replace 'https://api.example.com/applicants' with your API endpoint
-    const response = await fetch("http://localhost:5000/api/license");
+    const response = await fetch(`${BASE_URL}/api/license`);
 
     if (!response.ok) {
-      throw new Error('Failed to fetch applicants data.');
+      throw new Error("Failed to fetch applicants data.");
     }
 
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error fetching applicants:', error);
+    console.error("Error fetching applicants:", error);
     throw error;
   }
 }
-
 
 export async function bookTestForUser(userId, bookingDetails) {
   // try {
