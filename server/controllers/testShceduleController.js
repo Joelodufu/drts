@@ -24,7 +24,7 @@ const getTestSchedule = async (req, res) => {
 
 //create testSchedule
 const createTestSchedule = async (req, res) => {
-  const { applicantId, date, time, location, accessorId, testStatus } =
+  const { applicantId, user, date, time, location, accessorId, testStatus } =
     req.body;
 
   //add to db
@@ -52,10 +52,19 @@ const creatBatch = (req, res) => {
   const allTestSchedule = [];
   const { testSchedules } = req.body;
   testSchedules.forEach(
-    async ({ applicantId, date, time, location, accessorId, testStatus }) => {
+    async ({
+      applicantId,
+      user,
+      date,
+      time,
+      location,
+      accessorId,
+      testStatus,
+    }) => {
       try {
         const testSchedule = await TestSchedule.create({
           applicantId,
+          user,
           date,
           time,
           location,
@@ -77,7 +86,7 @@ const creatBatch = (req, res) => {
 // Update testSchedule
 const updateTestSchedule = async (req, res) => {
   const { id } = req.params;
-  const { applicantId, date, time, location, accessorId, testStatus } =
+  const { applicantId, user, date, time, location, accessorId, testStatus } =
     req.body;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
