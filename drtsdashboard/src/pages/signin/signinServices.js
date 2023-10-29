@@ -1,12 +1,15 @@
 export async function submitSignInForm(data) {
   try {
-    const response = await fetch("http://localhost:5000/api/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+    const response = await fetch(
+      "https://drts-server.onrender.com/api/auth/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
 
     if (response.status === 200) {
       const responseData = await response.json();
@@ -17,7 +20,7 @@ export async function submitSignInForm(data) {
 
       // Fetch user details using the token
       const userResponse = await fetch(
-        "http://localhost:5000/api/auth/user-details",
+        "https://drts-server.onrender.com/api/auth/user-details",
         {
           method: "GET",
           headers: {

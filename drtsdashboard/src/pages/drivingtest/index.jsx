@@ -2,6 +2,7 @@ import React from "react";
 import NavBar from "./../../components/NavBar";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import TestAppointmentsTable from "./components/TestApointmentTable";
 
 function DrivingTestPage() {
   return (
@@ -10,7 +11,7 @@ function DrivingTestPage() {
         <NavBar />
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
           <h1>Driving Tests</h1>
-         
+          <TestAppointmentsTable />
         </Box>
       </Box>
     </>
