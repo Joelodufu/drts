@@ -3,7 +3,7 @@ import NavBar from "./../../components/NavBar";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import LicenseTable from "./components/LicenseTable";
-import NewApplications from "./components/newAppplications";
+import NewApplications from "./components/NewApplications";
 
 function HomePage() {
   const user = JSON.parse(localStorage.getItem("user"));

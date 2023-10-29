@@ -1,8 +1,7 @@
 // licenseService.js
 
 // A mock URL for the license service API. Replace this with your actual backend API URL.
-const API_URL = "http://localhost:5000/api";
-import BASE_URL from '../../../service/config'
+import BASE_URL from "../../../service/config";
 // Function to post the form input to the backend
 export const postLicenseApplication = async (licenseData) => {
   try {
@@ -36,8 +35,8 @@ export const postLicenseApplication = async (licenseData) => {
     }, {});
 
     const jsonData = JSON.stringify(requestData);
-
-    const response = await fetch(`${BASE_URL}/license`, {
+    console.log(jsonData);
+    const response = await fetch(`https://drts-server.onrender.com/api/license`, {
       method: "POST",
       body: jsonData,
       headers: {

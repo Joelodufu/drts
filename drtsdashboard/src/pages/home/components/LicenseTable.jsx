@@ -362,9 +362,11 @@ const LicenseTable = () => {
               value={newLicenseForm.licenseType}
               onChange={handleFormChange}
             >
-              <MenuItem value="motorcycle">Motorcycle</MenuItem>
-              <MenuItem value="car">Car</MenuItem>
-              <MenuItem value="truck">Truck</MenuItem>
+              <MenuItem value="a">{"A Motorcycle"}</MenuItem>
+              <MenuItem value="b">{"B Tricycles"}</MenuItem>
+              <MenuItem value="c">{"C Cars"}</MenuItem>
+              <MenuItem value="d">{"D Truck"}</MenuItem>
+              <MenuItem value="e">{"E Heavy Machines"}</MenuItem>
             </Select>
           </FormControl>
           <FormControl fullWidth>

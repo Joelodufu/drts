@@ -12,6 +12,7 @@ export default function App() {
   return (
     <>
       <BrowserRouter>
+        AuthProvid
         <Routes>
           <Route path="/signin" exact element={<SignIn />}></Route>
           <Route path="/" exact element={<HomePage />}></Route>
