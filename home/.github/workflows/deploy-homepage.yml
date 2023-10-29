@@ -1,0 +1,28 @@
+name: Deploy General Page to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Adjust this to your main branch name
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Copy files
+        run: |
+          mkdir gh-pages
+          cp -r * gh-pages/
+          mv gh-pages/* .
+
+      - name: Deploy
+        run: |
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
+          git add .
+          git commit -m "Update general page"
+          git push

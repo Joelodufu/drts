@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy Admin to GitHub Pages
 
 on:
   push:
@@ -26,7 +26,7 @@ jobs:
 
       - name: Deploy
         run: |
-          git config --global user.email "joel.odufu@gmail.com"
+          git config --global user.email "joel.odufu"gmail.com"
           git config --global user.name "joelodufu"
           npm install -g gh-pages
           gh-pages -d build
