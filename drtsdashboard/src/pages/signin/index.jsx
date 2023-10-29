@@ -38,6 +38,7 @@ export default function SignIn() {
 
   if (loginSuccess) {
     navigate("/");
+    window.location.reload();
   }
 
   return (
