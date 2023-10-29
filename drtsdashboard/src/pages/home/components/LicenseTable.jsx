@@ -131,6 +131,7 @@ const LicenseTable = () => {
     try {
       const response = await postLicenseApplication(newLicenseForm);
       console.log("License application submitted successfully:", response);
+      window.location.reload();
     } catch (error) {
       // Handle errors
       console.error("Failed to submit license application:", error);
@@ -256,8 +257,9 @@ const LicenseTable = () => {
         onClose={handleApplyForNewLicenseDialogClose}
       >
         <DialogTitle>Apply for New License</DialogTitle>
-        <DialogContent>
+        <DialogContent style={{ margin: "16px" }}>
           <TextField
+            style={{ margin: "16px" }}
             fullWidth
             label="Full Name"
             name="fullName"
@@ -265,6 +267,7 @@ const LicenseTable = () => {
             onChange={handleFormChange}
           />
           <TextField
+            style={{ margin: "16px" }}
             fullWidth
             label="Date of Birth"
             type="date"
@@ -272,7 +275,7 @@ const LicenseTable = () => {
             value={newLicenseForm.dateofBirth}
             onChange={handleFormChange}
           />
-          <FormControl fullWidth>
+          <FormControl fullWidth style={{ margin: "16px" }}>
             <InputLabel>Gender</InputLabel>
             <Select
               name="gender"
@@ -285,13 +288,14 @@ const LicenseTable = () => {
             </Select>
           </FormControl>
           <TextField
+            style={{ margin: "16px" }}
             fullWidth
             label="Nationality"
             name="nationality"
             value={newLicenseForm.nationality}
             onChange={handleFormChange}
           />
-          <FormControl fullWidth>
+          <FormControl fullWidth style={{ margin: "16px" }}>
             <InputLabel>Blood Group</InputLabel>
             <Select
               name="bloodGroup"
@@ -309,6 +313,7 @@ const LicenseTable = () => {
             </Select>
           </FormControl>
           <TextField
+            style={{ margin: "16px" }}
             fullWidth
             label="National ID Number"
             name="nationalIDNumber"
@@ -316,6 +321,7 @@ const LicenseTable = () => {
             onChange={handleFormChange}
           />
           <TextField
+            style={{ margin: "16px" }}
             fullWidth
             label="Address"
             name="address"
@@ -323,13 +329,16 @@ const LicenseTable = () => {
             onChange={handleFormChange}
           />
           <TextField
+            style={{ margin: "16px" }}
             fullWidth
             label="Phone Number"
             name="phoneNumber"
             value={newLicenseForm.phoneNumber}
             onChange={handleFormChange}
           />
+          <br />
           <TextField
+            style={{ margin: "16px" }}
             fullWidth
             label="Email Address"
             name="email"
@@ -337,13 +346,14 @@ const LicenseTable = () => {
             onChange={handleFormChange}
           />
           <TextField
+            style={{ margin: "16px" }}
             fullWidth
             label="Next of Kin Address"
             name="nextOfKinsAddress"
             value={newLicenseForm.nextOfKinsAddress}
             onChange={handleFormChange}
           />
-          <FormControl fullWidth>
+          <FormControl fullWidth style={{ margin: "16px" }}>
             <InputLabel>Processing Center</InputLabel>
             <Select
               name="processingCenter"
@@ -355,7 +365,7 @@ const LicenseTable = () => {
               <MenuItem value="Center C">Center C</MenuItem>
             </Select>
           </FormControl>
-          <FormControl fullWidth>
+          <FormControl fullWidth style={{ margin: "16px" }}>
             <InputLabel>License Type</InputLabel>
             <Select
               name="licenseType"
@@ -369,7 +379,7 @@ const LicenseTable = () => {
               <MenuItem value="e">{"E Heavy Machines"}</MenuItem>
             </Select>
           </FormControl>
-          <FormControl fullWidth>
+          <FormControl style={{ margin: "16px" }} fullWidth>
             <InputLabel>Payment Method</InputLabel>
             <Select
               name="paymentMethod"
