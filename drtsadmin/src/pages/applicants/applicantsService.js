@@ -86,6 +86,11 @@ export async function bookTestForUser(user, applicantId, bookingDetails) {
       throw new Error(`Failed to book the test. Status: ${response.status}`);
     }
 
+    //delete the instance of application after creating the booking
+    await fetch(`${BASE_URL}/api/license/${applicantId}`, {
+      method: "DELETE",
+    }).then((response) => window.location.reload());
+
     // Handle the response from the server, if needed
     const data = await response.json();
     // Optionally, you can perform actions with the response data

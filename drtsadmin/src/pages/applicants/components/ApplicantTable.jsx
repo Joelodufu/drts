@@ -58,6 +58,17 @@ const ApplicantTable = () => {
     setPage(newPage);
   };
 
+  const handleDisaprrove = async () => {
+    await fetch(
+      `https://drts-server.onrender.com/api/license/${selectedApplicant._id}`,
+      {
+        method: "DELETE",
+      }
+    ).then(() => window.location.reload());
+
+    setSelectedApplicant(null);
+  };
+
   const addApplicationId = (row) => {
     const appId = row._id;
     setSelectedApplicant(row);
@@ -240,7 +251,7 @@ const ApplicantTable = () => {
           >
             Book Test
           </Button>
-          <Button onClick={() => setSelectedApplicant(null)} color="primary">
+          <Button onClick={() => handleDisaprrove()} color="primary">
             Disapprove
           </Button>
         </DialogActions>
