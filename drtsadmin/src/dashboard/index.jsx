@@ -18,24 +18,14 @@ const SummaryCard = ({ model, icon, instances }) => {
 const SummaryGrid = () => {
   const models = [
     {
-      model: "Users",
-      icon: "users-icon.png", // Replace with the actual image path
-      instances: 100, // Replace with the actual number of instances
-    },
-    {
       model: "Applicants",
       icon: "applicants-icon.png",
       instances: 50,
     },
     {
-      model: "Accessors",
+      model: "Tests",
       icon: "accessors-icon.png",
       instances: 30,
-    },
-    {
-      model: "Licenses",
-      icon: "licenses-icon.png",
-      instances: 75,
     },
   ];
 

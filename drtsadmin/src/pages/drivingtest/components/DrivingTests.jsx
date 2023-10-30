@@ -33,7 +33,7 @@ const TestAppointmentsTable = () => {
                 <IconButton color="primary">
                   <DateRange />
                 </IconButton>
-                Appointment Date
+                APPLICANT
               </Typography>
             </TableCell>
             <TableCell>
@@ -41,7 +41,7 @@ const TestAppointmentsTable = () => {
                 <IconButton color="primary">
                   <Timelapse />
                 </IconButton>
-                Appointment Time
+                DRIVER
               </Typography>
             </TableCell>
             <TableCell>
@@ -49,15 +49,15 @@ const TestAppointmentsTable = () => {
                 <IconButton color="primary">
                   <LocationCity />
                 </IconButton>
-                Location
+                LOCATION
               </Typography>
             </TableCell>
             <TableCell>
               <Typography variant="subtitle1">
                 <IconButton color="primary">
-                  <Close />
+                  <DateRange />
                 </IconButton>
-                Test Status
+                DATE
               </Typography>
             </TableCell>
           </TableRow>
@@ -65,20 +65,11 @@ const TestAppointmentsTable = () => {
         <TableBody>
           {data.map((appointment) => (
             <TableRow key={appointment._id}>
-              <TableCell>{appointment.date}</TableCell>
-              <TableCell>{appointment.time}</TableCell>
+              <TableCell>{appointment.user}</TableCell>
+              <TableCell>{appointment.accessorId}</TableCell>
               <TableCell>{appointment.location}</TableCell>
-              <TableCell>
-                {appointment.testStatus === "awaiting" ? (
-                  <IconButton color="primary">
-                    <Close />
-                  </IconButton>
-                ) : (
-                  <IconButton color="success">
-                    <Check />
-                  </IconButton>
-                )}
-              </TableCell>
+              <TableCell>{appointment.location}</TableCell>
+             
             </TableRow>
           ))}
         </TableBody>

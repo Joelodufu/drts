@@ -171,7 +171,7 @@ export default function NavBar() {
               />
             </ListItemButton>
           </ListItem>
-          <ListItem
+          {/* <ListItem
             disablePadding
             sx={{ display: "block" }}
             onClick={() => {
@@ -196,7 +196,7 @@ export default function NavBar() {
               </ListItemIcon>
               <ListItemText primary="Licenses" sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>
-          </ListItem>
+          </ListItem> */}
           <ListItem
             disablePadding
             sx={{ display: "block" }}
