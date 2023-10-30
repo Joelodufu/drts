@@ -128,6 +128,10 @@ const LicenseTable = () => {
   const handleApplyForNewLicenseDialogClose = async () => {
     setApplyForNewLicenseDialogOpen(false);
     // Call the postLicenseApplication function to submit the form data
+  };
+  const handleApplyForNewLicenseSubmitDialogClose = async () => {
+    setApplyForNewLicenseDialogOpen(false);
+    // Call the postLicenseApplication function to submit the form data
     try {
       const response = await postLicenseApplication(newLicenseForm);
       console.log("License application submitted successfully:", response);
@@ -170,7 +174,7 @@ const LicenseTable = () => {
           color="primary"
           onClick={handleApplyForNewLicense}
         >
-          Apply for New License
+          Schedule License Test
         </Button>
       </div>
       <div>
@@ -256,7 +260,7 @@ const LicenseTable = () => {
         open={applyForNewLicenseDialogOpen}
         onClose={handleApplyForNewLicenseDialogClose}
       >
-        <DialogTitle>Apply for New License</DialogTitle>
+        <DialogTitle>Schedule License Test</DialogTitle>
         <DialogContent style={{ margin: "16px" }}>
           <TextField
             style={{ margin: "16px" }}
@@ -391,13 +395,16 @@ const LicenseTable = () => {
               <MenuItem value="Card">Card</MenuItem>
             </Select>
           </FormControl>
-          <DocumentUploader />
+          <DocumentUploader onDocumentsUploaded={handleDocumentsUploaded} />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleApplyForNewLicenseDialogClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleApplyForNewLicenseDialogClose} color="primary">
+          <Button
+            onClick={handleApplyForNewLicenseSubmitDialogClose}
+            color="primary"
+          >
             Submit
           </Button>
         </DialogActions>

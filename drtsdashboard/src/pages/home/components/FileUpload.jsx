@@ -5,10 +5,6 @@ import { Grid, Button, Container, Typography, Divider } from "@mui/material";
 
 const FileUpload = ({ onDocumentsUploaded }) => {
   const [selectedDocuments, setSelectedDocuments] = useState({
-    Passport: null,
-    "National Id": null,
-    "Utility Bill": null,
-    "Eye Test Certificate": null,
     "Drivers Permit": null,
   });
 
@@ -54,7 +50,7 @@ const FileUpload = ({ onDocumentsUploaded }) => {
 
   return (
     <Container>
-      <Typography variant="h5" gutterBottom>
+      <Typography variant="h3" gutterBottom>
         Document Upload Form
       </Typography>
       {Object.entries(selectedDocuments).map(([documentName, file]) => (

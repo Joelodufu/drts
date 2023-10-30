@@ -3,12 +3,8 @@ import axios from "axios";
 import { Grid, Button, Container, Typography, Divider } from "@mui/material";
 import { useDropzone } from "react-dropzone";
 
-const DocumentUploader = () => {
+const DocumentUploader = ({ onDocumentsUploaded }) => {
   const [selectedDocuments, setSelectedDocuments] = useState({
-    Pasport: null,
-    "National Id": null,
-    "Utility Bill": null,
-    "Eye Test Certificate": null,
     "Drivers Permit": null,
   });
 

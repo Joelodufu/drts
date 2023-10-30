@@ -55,12 +55,12 @@ const TestAppointmentsTable = () => {
           <TableRow>
             <TableCell>
               <Typography variant="subtitle1">
-                <AccessTime /> Date
+                <AccessTime /> Aplicant
               </Typography>
             </TableCell>
             <TableCell>
               <Typography variant="subtitle1">
-                <AccessTime /> Appointment Time
+                <AccessTime /> Accessor
               </Typography>
             </TableCell>
             <TableCell>
@@ -69,27 +69,17 @@ const TestAppointmentsTable = () => {
               </Typography>
             </TableCell>
             <TableCell>
-              <Typography variant="subtitle1">Test Status</Typography>
+              <Typography variant="subtitle1">Date</Typography>
             </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {data.map((appointment) => (
             <TableRow key={appointment._id}>
-              <TableCell>{appointment.date}</TableCell>
-              <TableCell>{appointment.time}</TableCell>
+              <TableCell>{appointment.user}</TableCell>
+              <TableCell>{appointment.accessorId}</TableCell>
               <TableCell>{appointment.location}</TableCell>
-              <TableCell>
-                {appointment.testStatus === "awaiting" ? (
-                  <IconButton color="primary">
-                    <Close />
-                  </IconButton>
-                ) : (
-                  <IconButton color="success">
-                    <Check />
-                  </IconButton>
-                )}
-              </TableCell>
+              <TableCell>{appointment.date}</TableCell>
             </TableRow>
           ))}
         </TableBody>

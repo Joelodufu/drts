@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "/drtsdashboard/dist",
+    "public": "drtsdashboard/dist",
     "ignore": [
       "firebase.json",
       "**/.*",
