@@ -20,12 +20,12 @@ export const fetchTestAppointments = async () => {
   }
 };
 
-export const fetchUserData = async (userIds) => {
+export const fetchUserData = async (applicationIds) => {
   try {
-    const userDataPromises = userIds.map((userId) =>
-      fetch(`${API_BASE_URL}/users/${userId}`).then((response) =>
+    const userDataPromises = applicationIds.map((applicationId) =>
+      fetch(`${API_BASE_URL}/license/${applicationId}`).then((response) =>
         response.json()
-      ) 
+      )
     );
 
     const userData = await Promise.all(userDataPromises);
