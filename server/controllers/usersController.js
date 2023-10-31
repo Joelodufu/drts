@@ -23,6 +23,31 @@ const getUser = async (req, res) => {
 };
 
 
+
+const updateUser = async (req, res) => {
+  const { id } = req.params;
+  const { firstName, lastNams, email, role } = req.body;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "No such User" });
+  }
+
+  try {
+    const updatedUser = await User.findOneAndUpdate(
+      { _id: id },
+      { ...req.body }
+    );
+
+    if (!updatedUser) {
+      return res.status(404).json({ error: "No such user" });
+    }
+
+    res.status(200).json(updatedUser);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 // Delete User
 const deleteUser = async (req, res) => {
   const { id } = req.params;
@@ -46,6 +71,7 @@ const deleteUser = async (req, res) => {
 
 module.exports = {
   getUsers,
+  updateUser,
   getUser,
   deleteUser,
 };

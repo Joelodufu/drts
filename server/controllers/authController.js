@@ -88,4 +88,5 @@ const getUserDetails = async (req, res) => {
   }
 };
 
-module.exports = { register, login, getUserDetails };
+
+module.exports = { register, login, getUserDetails, };

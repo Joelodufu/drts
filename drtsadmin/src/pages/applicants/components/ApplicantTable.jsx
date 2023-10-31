@@ -94,7 +94,7 @@ const ApplicantTable = () => {
   const handleBooking = async () => {
     try {
       const user = selectedApplicant.user;
-      const applicantId = selectedApplicant.fullName;
+      const applicantId = selectedApplicant._id;
       // Replace 'id' with the actual user ID field
       await bookTestForUser(user, applicantId, bookingData);
       handleBookingDialogClose();
