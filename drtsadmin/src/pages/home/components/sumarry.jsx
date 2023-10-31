@@ -24,18 +24,18 @@ const modelsData = [
     icon: <AssignmentInd />,
     color: "#FFFFFF",
   },
-  // {
-  //   model: "Accessors",
-  //   instances: 30,
-  //   icon: <SupervisorAccount />,
-  //   color: "#FFFFFF",
-  // },
-  // {
-  //   model: "LICENSE",
-  //   instances: 75,
-  //   icon: <Description />,
-  //   color: "#FFFFFF",
-  // },
+  {
+    model: "Accessors",
+    instances: 30,
+    icon: <SupervisorAccount />,
+    color: "#FFFFFF",
+  },
+  {
+    model: "USERS",
+    instances: 75,
+    icon: <Description />,
+    color: "#FFFFFF",
+  },
 ];
 
 const SummaryCard = ({ model, icon, instances, color }) => {

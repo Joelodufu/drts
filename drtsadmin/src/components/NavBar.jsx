@@ -23,6 +23,7 @@ import UsersIcon from "@mui/icons-material/AccountCircle";
 
 import { useNavigate } from "react-router-dom";
 import CardMembership from "@mui/icons-material/CardMembership";
+import ChevronLeft from "@mui/icons-material/ChevronLeft";
 
 const drawerWidth = 240;
 
@@ -171,11 +172,11 @@ export default function NavBar() {
               />
             </ListItemButton>
           </ListItem>
-          {/* <ListItem
+          <ListItem
             disablePadding
             sx={{ display: "block" }}
             onClick={() => {
-              navigate("/license");
+              navigate("/users");
             }}
           >
             <ListItemButton
@@ -192,11 +193,11 @@ export default function NavBar() {
                   justifyContent: "center",
                 }}
               >
-                <ApprovalIcon />
+                <SpeedIcon />
               </ListItemIcon>
-              <ListItemText primary="Licenses" sx={{ opacity: open ? 1 : 0 }} />
+              <ListItemText primary="Users" sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>
-          </ListItem> */}
+          </ListItem>
           <ListItem
             disablePadding
             sx={{ display: "block" }}
@@ -218,10 +219,39 @@ export default function NavBar() {
                   justifyContent: "center",
                 }}
               >
+                <UsersIcon />
+              </ListItemIcon>
+              <ListItemText
+                primary="Test Schedules"
+                sx={{ opacity: open ? 1 : 0 }}
+              />
+            </ListItemButton>
+          </ListItem>
+          <ListItem
+            disablePadding
+            sx={{ display: "block" }}
+            onClick={() => {
+              navigate("/accessors");
+            }}
+          >
+            <ListItemButton
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? "initial" : "center",
+                px: 2.5,
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : "auto",
+                  justifyContent: "center",
+                }}
+              >
                 <SpeedIcon />
               </ListItemIcon>
               <ListItemText
-                primary="Driving Test"
+                primary="Accessors"
                 sx={{ opacity: open ? 1 : 0 }}
               />
             </ListItemButton>
