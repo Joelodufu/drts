@@ -8,7 +8,12 @@ import Profile from "./pages/profile";
 import SignUp from "./pages/signup";
 import SignIn from "./pages/signin";
 import DriversLicence from "./pages/driverslicence";
+
+const user = JSON.parse(localStorage.getItem("user"));
+
 export default function App() {
+  console.log(user.role);
+  console.log(user);
   return (
     <>
       <BrowserRouter>

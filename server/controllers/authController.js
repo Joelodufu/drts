@@ -81,6 +81,7 @@ const getUserDetails = async (req, res) => {
       firstName: user.firstName,
       lastName: user.lastName,
       email: user.email,
+      role: user.role,
       // Add more user details as needed
     });
   } catch (error) {
