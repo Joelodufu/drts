@@ -32,10 +32,6 @@ export async function submitSignInForm(data) {
       if (userResponse.status === 200) {
         const user = await userResponse.json();
         // Store the user details in local storage
-        // if (user["role"] == "admin") {
-        //   window.location.href = "https://drtsadminonly.web.app/";
-        // }
-        console.log(user);
         localStorage.setItem("user", JSON.stringify(user));
       }
 

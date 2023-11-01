@@ -33,9 +33,9 @@ export default function SignIn() {
       // Handle login failure, show an error message, etc.
     }
   };
-  console.log(user);
+
   const navigate = useNavigate();
- 
+
   if (loginSuccess) {
     navigate("/");
     window.location.reload();

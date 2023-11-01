@@ -11,7 +11,6 @@ import DriversLicence from "./pages/driverslicence";
 let user = JSON.parse(localStorage.getItem("user"));
 
 export default function App() {
- 
   return (
     <>
       <BrowserRouter>
@@ -35,6 +34,8 @@ export default function App() {
             <Route path="/" exact element={<SignIn />}></Route>
             <Route path="/signin" exact element={<SignIn />}></Route>
             <Route path="/register" exact element={<SignUp />}></Route>
+            <Route path="/profile" exact element={<SignIn />}></Route>
+
             <Route path="/signup" exact element={<SignUp />}></Route>
           </Routes>
         )}
