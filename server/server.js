@@ -8,21 +8,22 @@ const AuthRoute = require("./routes/authRoute");
 const UserRoute = require("./routes/users/users");
 const LocationRoute = require("./routes/location/location");
 require("dotenv").config();
+require("express-async-errors");
 const cors = require("cors");
 const morgan = require("morgan"); // Import Morgan
 
+const db = require("./db");
 // Create a MySQL connection pool
-const db = mysql.createPool({
-  host: process.env.DEV_DB_HOST,
-  user: process.env.DEV_DB_USER_NAME,
-  password: process.env.DEV_DB_PASSWORD,
-  database: process.env.DEV_DB_NAME,
-});
 
 // Express app
 const app = express();
 
 // Middleware
+app.use((err, req, res, next) => {
+  console.log(err);
+  res.status(err.status || 500).send(err.message);
+  next();
+});
 app.use(cors());
 app.use(express.json());
 

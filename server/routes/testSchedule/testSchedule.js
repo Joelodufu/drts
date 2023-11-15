@@ -1,37 +1,27 @@
 const express = require("express");
 const path = require("path");
 
-const {
-  createTestSchedule,
-  creatBatch,
-  getTestSchedules,
-  getTestSchedule,
-  updateTestSchedule,
-  deleteTestSchedule,
-  getTestScheduleByUserId,
-} = require("../../controllers/testShceduleController");
+const testScheduleController = require("../../controllers/testShceduleController");
 
 const router = express.Router();
 
 //get all testSchedules
-router.get("/", getTestSchedules);
+router.get("/", testScheduleController.getTestSchedules);
 
 //Get Single testSchedule
-router.get("/:id", getTestSchedule);
+router.get("/:id", testScheduleController.getTestSchedule);
 
 //POST a new testSchedule
-router.post("/", createTestSchedule);
+router.post("/", testScheduleController.createTestSchedule);
 
 //Post Batch TestSchedules
 
-router.post("/batch", creatBatch);
-
 //get testSchedules by user ID
-router.get("/user/:userId", getTestScheduleByUserId);
+router.get("/user/:userId", testScheduleController.getTestScheduleByUserId);
 
 //Delete an testSchedule
-router.delete("/:id", deleteTestSchedule);
+router.delete("/:id", testScheduleController.deleteTestSchedule);
 //Update an testSchedule
-router.patch("/:id", updateTestSchedule);
+router.patch("/:id", testScheduleController.updateTestSchedule);
 
 module.exports = router;

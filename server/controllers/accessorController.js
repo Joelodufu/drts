@@ -1,121 +1,164 @@
-const Accessor = require("../models/accessorModel");
-const mongoose = require("mongoose");
-//gel all accessor
-const getAccessors = async (req, res) => {
-  const accessors = await Accessor.find({}).sort({ createdAt: -1 });
+const mysql = require("mysql2");
 
-  res.status(200).json(accessors);
-};
-//get single accessor
-const getAccessor = async (req, res) => {
-  const { id } = req.params;
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ error: "no such accessor" });
+// Assuming you have a configured MySQL connection
+const connection = mysql.createConnection({
+  host: process.env.DEV_DB_HOST,
+  user: process.env.DEV_DB_USER_NAME,
+  password: process.env.DEV_DB_PASSWORD,
+  database: process.env.DEV_DB_NAME,
+});
+
+// Connect to MySQL
+connection.connect((err) => {
+  if (err) {
+    console.error("Error connecting to MySQL: " + err.stack);
+    return;
   }
+  console.log("Connected to MySQL as id " + connection.threadId);
 
-  const accessor = await Accessor.findById(id);
+  // Create the table if it doesn't exist
+  const createTableQuery = `
+    CREATE TABLE IF NOT EXISTS accessors (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      name VARCHAR(255),
+      activStatus VARCHAR(255),
+      phone VARCHAR(20),
+      email VARCHAR(255),
+      address VARCHAR(255),
+      image VARCHAR(255),
+      createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    )
+  `;
 
-  if (!accessor) {
-    return res.status(404).json({ error: "No Such Accessor" });
-  }
-
-  res.status(200).json(accessor);
-};
-
-//create accessor
-const createAccessor = async (req, res) => {
-  const { name, activStatus,phone, email, address, image } = req.body;
-
-  //add to db
-  try {
-    const accessor = await Accessor.create({
-      name,
-      activStatus,
-      phone,
-      email,
-      address,
-      image,
-    });
-    res.status(200).json(accessor);
-  } catch (error) {
-    res.status(400).json({
-      error: error.message,
-    });
-  }
-};
-
-//Create Batch
-
-const creatBatch = (req, res) => {
-  const allAccessor = [];
-  const { accessors } = req.body;
-  accessors.forEach(async ({  name, activStatus,phone, email, address, image }) => {
-    try {
-      const accessor = await Accessor.create({
-        name,
-        activStatus,
-        image,
-      });
-      allAccessor.push(accessor);
-    } catch (error) {
-      res.status(400).json({ error: error.message });
+  connection.query(createTableQuery, (createError) => {
+    if (createError) {
+      console.error("Error creating table: " + createError.message);
+    } else {
+      console.log("Table created or already exists");
     }
+  });
+});
+
+// Get all accessors
+const getAccessors = (req, res) => {
+  const query = "SELECT * FROM accessors ORDER BY createdAt DESC";
+
+  connection.query(query, (error, results) => {
+    if (error) {
+      res.status(500).json({ error: error.message });
+    } else {
+      res.status(200).json(results);
+    }
+  });
+};
+
+// Get single accessor
+const getAccessor = (req, res) => {
+  const { id } = req.params;
+  const query = "SELECT * FROM accessors WHERE id = ?";
+
+  connection.query(query, [id], (error, results) => {
+    if (error) {
+      res.status(500).json({ error: error.message });
+    } else if (results.length === 0) {
+      res.status(404).json({ error: "No such accessor" });
+    } else {
+      res.status(200).json(results[0]);
+    }
+  });
+};
+
+// Create accessor
+const createAccessor = (req, res) => {
+  const { name, activStatus, phone, email, address, image } = req.body;
+  const query =
+    "INSERT INTO accessors (name, activStatus, phone, email, address, image) VALUES (?, ?, ?, ?, ?, ?)";
+
+  connection.query(
+    query,
+    [name, activStatus, phone, email, address, image],
+    (error, results) => {
+      if (error) {
+        res.status(400).json({ error: error.message });
+      } else {
+        res.status(200).json({ id: results.insertId });
+      }
+    }
+  );
+};
+
+// Create Batch
+const createBatch = (req, res) => {
+  const { accessors } = req.body;
+  const allAccessor = [];
+
+  accessors.forEach(({ name, activStatus, phone, email, address, image }) => {
+    const query =
+      "INSERT INTO accessors (name, activStatus, phone, email, address, image) VALUES (?, ?, ?, ?, ?, ?)";
+
+    connection.query(
+      query,
+      [name, activStatus, phone, email, address, image],
+      (error, results) => {
+        if (error) {
+          res.status(400).json({ error: error.message });
+        } else {
+          allAccessor.push({ id: results.insertId });
+        }
+      }
+    );
   });
 
   res.status(200).json(allAccessor);
 };
 
-//update accessor
-
 // Update accessor
-const updateAccessor = async (req, res) => {
+const updateAccessor = (req, res) => {
   const { id } = req.params;
-  const {  name, activStatus,phone, email, address, image } = req.body;
+  const { name, activStatus, phone, email, address, image } = req.body;
+  const query =
+    "UPDATE accessors SET name=?, activStatus=?, phone=?, email=?, address=?, image=? WHERE id=?";
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ error: "No such accessor" });
-  }
-
-  try {
-    const updatedAccessor = await Accessor.findOneAndUpdate(
-      { _id: id },
-      { ...req.body }
-    );
-
-    if (!updatedAccessor) {
-      return res.status(404).json({ error: "No such accessor" });
+  connection.query(
+    query,
+    [name, activStatus, phone, email, address, image, id],
+    (error, results) => {
+      if (error) {
+        res.status(400).json({ error: error.message });
+      } else if (results.affectedRows === 0) {
+        res.status(404).json({ error: "No such accessor" });
+      } else {
+        res.status(200).json({ message: "Accessor updated successfully" });
+      }
     }
-
-    res.status(200).json(updatedAccessor);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
+  );
 };
 
 // Delete accessor
-const deleteAccessor = async (req, res) => {
+const deleteAccessor = (req, res) => {
   const { id } = req.params;
+  const query = "DELETE FROM accessors WHERE id = ?";
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ error: "No such accessor" });
-  }
-
-  try {
-    const deletedAccessor = await Accessor.findByIdAndRemove(id);
-
-    if (!deletedAccessor) {
-      return res.status(404).json({ error: "No such accessor" });
+  connection.query(query, [id], (error, results) => {
+    if (error) {
+      res.status(400).json({ error: error.message });
+    } else if (results.affectedRows === 0) {
+      res.status(404).json({ error: "No such accessor" });
+    } else {
+      res.status(200).json({ message: "Accessor deleted successfully" });
     }
-
-    res.status(200).json({ message: "Accessor deleted successfully" });
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
+  });
 };
+
+// Close MySQL connection when the application exits
+process.on("exit", () => {
+  connection.end();
+});
 
 module.exports = {
   createAccessor,
-  creatBatch,
+  createBatch,
   getAccessors,
   getAccessor,
   updateAccessor,

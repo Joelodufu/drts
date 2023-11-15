@@ -1,51 +1,99 @@
-const User = require("../models/User");
-const mongoose = require("mongoose");
-//gel all User
-const getUsers = async (req, res) => {
-  const users = await User.find({}).sort({ createdAt: -1 });
+const mysql = require("mysql2");
 
-  res.status(200).json(users);
+// Assuming you have a configured MySQL connection
+const connection = mysql.createConnection({
+  host: process.env.DEV_DB_HOST,
+  user: process.env.DEV_DB_USER_NAME,
+  password: process.env.DEV_DB_PASSWORD,
+  database: process.env.DEV_DB_NAME,
+});
+
+// Connect to MySQL
+connection.connect((err) => {
+  if (err) {
+    console.error("Error connecting to MySQL: " + err.stack);
+    return;
+  }
+  console.log("Connected to MySQL as id " + connection.threadId);
+});
+
+// Get all Users
+const getUsers = (req, res) => {
+  const query =
+    "SELECT id, firstName, lastName, role, email FROM users ORDER BY createdAt DESC";
+
+  connection.query(query, (error, results) => {
+    if (error) {
+      res.status(500).json({ error: error.message });
+    } else {
+      res.status(200).json(results);
+    }
+  });
 };
-//get single User
-const getUser = async (req, res) => {
+
+// Get single User
+const getUser = (req, res) => {
   const { id } = req.params;
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ error: "no such User" });
-  }
+  const query =
+    "SELECT firstName, lastName, role, email FROM users WHERE id = ?";
 
-  const user = await User.findById(id);
-
-  if (!user) {
-    return res.status(404).json({ error: "No Such User" });
-  }
-
-  res.status(200).json(user);
+  connection.query(query, [id], (error, results) => {
+    if (error) {
+      res.status(500).json({ error: error.message });
+    } else if (results.length === 0) {
+      res.status(404).json({ error: "No such User" });
+    } else {
+      res.status(200).json(results[0]);
+    }
+  });
 };
 
+// Update User
+const updateUser = (req, res) => {
+  const { id } = req.params;
+  const { firstName, lastName, email, role } = req.body;
+  const query =
+    "UPDATE users SET firstName=?, lastName=?, email=?, role=? WHERE id=?";
+
+  connection.query(
+    query,
+    [firstName, lastName, email, role, id],
+    (error, results) => {
+      if (error) {
+        res.status(500).json({ error: error.message });
+      } else if (results.affectedRows === 0) {
+        res.status(404).json({ error: "No such user" });
+      } else {
+        res.status(200).json({ message: "User updated successfully" });
+      }
+    }
+  );
+};
 
 // Delete User
-const deleteUser = async (req, res) => {
+const deleteUser = (req, res) => {
   const { id } = req.params;
+  const query = "DELETE FROM users WHERE id = ?";
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ error: "No such User" });
-  }
-
-  try {
-    const deletedUser = await User.findByIdAndRemove(id);
-
-    if (!deletedUser) {
-      return res.status(404).json({ error: "No such User" });
+  connection.query(query, [id], (error, results) => {
+    if (error) {
+      res.status(500).json({ error: error.message });
+    } else if (results.affectedRows === 0) {
+      res.status(404).json({ error: "No such User" });
+    } else {
+      res.status(200).json({ message: "User deleted successfully" });
     }
-
-    res.status(200).json({ message: "User deleted successfully" });
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
+  });
 };
+
+// Close MySQL connection when the application exits
+process.on("exit", () => {
+  connection.end();
+});
 
 module.exports = {
   getUsers,
+  updateUser,
   getUser,
   deleteUser,
 };

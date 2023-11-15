@@ -1,159 +1,184 @@
-const TestSchedule = require("../models/testScheduleModel");
-const mongoose = require("mongoose");
-//gel all testSchedule
-const getTestSchedules = async (req, res) => {
-  const testSchedules = await TestSchedule.find({}).sort({ createdAt: -1 });
+const mysql = require("mysql2");
 
-  res.status(200).json(testSchedules);
+// Assuming you have a configured MySQL connection
+const connection = mysql.createConnection({
+  host: process.env.DEV_DB_HOST,
+  user: process.env.DEV_DB_USER_NAME,
+  password: process.env.DEV_DB_PASSWORD,
+  database: process.env.DEV_DB_NAME,
+});
+
+// Connect to MySQL
+connection.connect((err) => {
+  if (err) {
+    console.error("Error connecting to MySQL: " + err.stack);
+    return;
+  }
+  console.log("Connected to MySQL as id " + connection.threadId);
+
+  // Create the table if it doesn't exist
+  const createTableQuery = `
+    CREATE TABLE IF NOT EXISTS testSchedules (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      applicantId INT,
+      user VARCHAR(255),
+      date DATE,
+      time TIME,
+      location VARCHAR(255),
+      accessorId INT,
+      testStatus VARCHAR(255),
+      createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    )
+  `;
+
+  connection.query(createTableQuery, (createError) => {
+    if (createError) {
+      console.error("Error creating table: " + createError.message);
+    } else {
+      console.log("Table created or already exists");
+    }
+  });
+});
+
+// Get all testSchedules
+const getTestSchedules = (req, res) => {
+  const query = "SELECT * FROM testSchedules ORDER BY createdAt DESC";
+
+  connection.query(query, (error, results) => {
+    if (error) {
+      res.status(500).json({ error: error.message });
+    } else {
+      res.status(200).json(results);
+    }
+  });
 };
-//get single testSchedule
-const getTestSchedule = async (req, res) => {
+
+// Get single testSchedule
+const getTestSchedule = (req, res) => {
   const { id } = req.params;
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ error: "no such testSchedule" });
-  }
+  const query = "SELECT * FROM testSchedules WHERE id = ?";
 
-  const testSchedule = await TestSchedule.findById(id);
-
-  if (!testSchedule) {
-    return res.status(404).json({ error: "No Such TestSchedule" });
-  }
-
-  res.status(200).json(testSchedule);
+  connection.query(query, [id], (error, results) => {
+    if (error) {
+      res.status(500).json({ error: error.message });
+    } else if (results.length === 0) {
+      res.status(404).json({ error: "No such testSchedule" });
+    } else {
+      res.status(200).json(results[0]);
+    }
+  });
 };
 
-//get schedules by user id
+// Get testSchedules by user ID
+const getTestScheduleByUserId = (req, res) => {
+  const { userId } = req.params;
+  const query =
+    "SELECT * FROM testSchedules WHERE user = ? ORDER BY createdAt DESC";
 
-//Get applicants by user ID
-const getTestScheduleByUserId = async (req, res) => {
-  const { userId } = req.params; // Assuming the user ID is passed as a route parameter
-
-  if (!mongoose.Types.ObjectId.isValid(userId)) {
-    return res.status(404).json({ error: "Invalid user ID" });
-  }
-
-  try {
-    const testSchedules = await TestSchedule.find({ user: userId }).sort({
-      createdAt: -1,
-    });
-
-    res.status(200).json(testSchedules);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
+  connection.query(query, [userId], (error, results) => {
+    if (error) {
+      res.status(500).json({ error: error.message });
+    } else {
+      res.status(200).json(results);
+    }
+  });
 };
 
-//create testSchedule
-const createTestSchedule = async (req, res) => {
+// Create testSchedule
+const createTestSchedule = (req, res) => {
   const { applicantId, user, date, time, location, accessorId, testStatus } =
     req.body;
+  const query =
+    "INSERT INTO testSchedules (applicantId, user, date, time, location, accessorId, testStatus) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-  //add to db
-  try {
-    const testSchedule = await TestSchedule.create({
-      applicantId,
-      user,
-      date,
-      time,
-      location,
-      accessorId,
-      testStatus,
-    });
-    res.status(200).json(testSchedule);
-  } catch (error) {
-    res.status(400).json({
-      error: error.message,
-    });
-  }
+  connection.query(
+    query,
+    [applicantId, user, date, time, location, accessorId, testStatus],
+    (error, results) => {
+      if (error) {
+        res.status(400).json({ error: error.message });
+      } else {
+        res.status(200).json({ id: results.insertId });
+      }
+    }
+  );
 };
 
-//Create Batch
-
-const creatBatch = (req, res) => {
-  const allTestSchedule = [];
+// Create Batch
+const createBatch = (req, res) => {
   const { testSchedules } = req.body;
+  const allTestSchedule = [];
+
   testSchedules.forEach(
-    async ({
-      applicantId,
-      user,
-      date,
-      time,
-      location,
-      accessorId,
-      testStatus,
-    }) => {
-      try {
-        const testSchedule = await TestSchedule.create({
-          applicantId,
-          user,
-          date,
-          time,
-          location,
-          accessorId,
-          testStatus,
-        });
-        allTestSchedule.push(testSchedule);
-      } catch (error) {
-        res.status(400).json({ error: error.message });
-      }
+    ({ applicantId, user, date, time, location, accessorId, testStatus }) => {
+      const query =
+        "INSERT INTO testSchedules (applicantId, user, date, time, location, accessorId, testStatus) VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+      connection.query(
+        query,
+        [applicantId, user, date, time, location, accessorId, testStatus],
+        (error, results) => {
+          if (error) {
+            res.status(400).json({ error: error.message });
+          } else {
+            allTestSchedule.push({ id: results.insertId });
+          }
+        }
+      );
     }
   );
 
   res.status(200).json(allTestSchedule);
 };
 
-//update testSchedule
-
 // Update testSchedule
-const updateTestSchedule = async (req, res) => {
+const updateTestSchedule = (req, res) => {
   const { id } = req.params;
   const { applicantId, user, date, time, location, accessorId, testStatus } =
     req.body;
+  const query =
+    "UPDATE testSchedules SET applicantId=?, user=?, date=?, time=?, location=?, accessorId=?, testStatus=? WHERE id=?";
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ error: "No such testSchedule" });
-  }
-
-  try {
-    const updatedTestSchedule = await TestSchedule.findOneAndUpdate(
-      { _id: id },
-      { ...req.body }
-    );
-
-    if (!updatedTestSchedule) {
-      return res.status(404).json({ error: "No such testSchedule" });
+  connection.query(
+    query,
+    [applicantId, user, date, time, location, accessorId, testStatus, id],
+    (error, results) => {
+      if (error) {
+        res.status(400).json({ error: error.message });
+      } else if (results.affectedRows === 0) {
+        res.status(404).json({ error: "No such testSchedule" });
+      } else {
+        res.status(200).json({ message: "TestSchedule updated successfully" });
+      }
     }
-
-    res.status(200).json(updatedTestSchedule);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
+  );
 };
 
 // Delete testSchedule
-const deleteTestSchedule = async (req, res) => {
+const deleteTestSchedule = (req, res) => {
   const { id } = req.params;
+  const query = "DELETE FROM testSchedules WHERE id = ?";
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ error: "No such testSchedule" });
-  }
-
-  try {
-    const deletedTestSchedule = await TestSchedule.findByIdAndRemove(id);
-
-    if (!deletedTestSchedule) {
-      return res.status(404).json({ error: "No such testSchedule" });
+  connection.query(query, [id], (error, results) => {
+    if (error) {
+      res.status(400).json({ error: error.message });
+    } else if (results.affectedRows === 0) {
+      res.status(404).json({ error: "No such testSchedule" });
+    } else {
+      res.status(200).json({ message: "TestSchedule deleted successfully" });
     }
-
-    res.status(200).json({ message: "TestSchedule deleted successfully" });
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
+  });
 };
+
+// Close MySQL connection when the application exits
+process.on("exit", () => {
+  connection.end();
+});
 
 module.exports = {
   createTestSchedule,
-  creatBatch,
+  createBatch,
   getTestSchedules,
   getTestSchedule,
   updateTestSchedule,
