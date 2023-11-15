@@ -8,6 +8,7 @@ const getDbConnection = async () => {
     user: "sql12662397",
     password: "emr87xH41j",
     database: "sql12662397",
+    port: 3306,
   });
   return pool;
 };
