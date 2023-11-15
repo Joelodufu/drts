@@ -20,7 +20,7 @@ router.post("/", testScheduleController.createTestSchedule);
 router.get("/user/:userId", testScheduleController.getTestScheduleByUserId);
 
 //Delete an testSchedule
-router.delete("/:id", testScheduleController.deleteTestSchedule);
+router.delete("/:id",   testScheduleController. deleteTestSchedule);
 //Update an testSchedule
 router.patch("/:id", testScheduleController.updateTestSchedule);
 
