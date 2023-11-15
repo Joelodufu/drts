@@ -1,4 +1,4 @@
-const BASE_URL = "https://drts-server.onrender.com";
+const BASE_URL = "http://localhost:5000";
 
 export async function fetchAccessors() {
   try {

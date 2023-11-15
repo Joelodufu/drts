@@ -3,10 +3,10 @@ require("dotenv").config();
 
 const getDbConnection = async () => {
   const db = await mysql.createPool({
-    host: process.env.DEV_DB_HOST,
-    user: process.env.DEV_DB_USER_NAME,
-    password: process.env.DEV_DB_PASSWORD,
-    database: process.env.DEV_DB_NAME,
+    host: "sql12.freesqldatabase.com",
+    user: "sql12662397",
+    password: "emr87xH41j",
+    database: "sql12662397",
   });
   return db;
 };

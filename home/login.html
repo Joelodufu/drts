@@ -403,11 +403,13 @@
               if (data.error) {
                 alert(data.error);
               } else {
-                const token = data.token;
-
+                const role = data.role;
+                if (role === "admin") {
+                  window.location.href = "https://drtsadminonly.web.app/";
+                }
                 // Append the token as a query parameter to the URL
                 const redirectURL =
-                  "https://itskysolutions.com/?token=" +
+                  "https://drtsuserdashboard.web.app/?token=" +
                   encodeURIComponent(token);
 
                 alert("JWT received: " + token);

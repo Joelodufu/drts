@@ -8,18 +8,39 @@ import {
   TableRow,
   Paper,
   IconButton,
-  Typography, // Add Typography component
+  Typography,
 } from "@mui/material";
-import { Check, Close, Timelapse, DateRange, LocationCity } from "@mui/icons-material";
-import { fetchTestAppointments } from "./TestAppointmentController";
+import {
+  Check,
+  Close,
+  Timelapse,
+  DateRange,
+  LocationCity,
+} from "@mui/icons-material";
+import {
+  fetchTestAppointments,
+  fetchUserData,
+} from "./TestAppointmentController";
 
 const TestAppointmentsTable = () => {
   const [data, setData] = useState([]);
+  const [userNames, setUserNames] = useState({});
 
   useEffect(() => {
-    // Fetch data when the component mounts
+    // Fetch test appointments
     fetchTestAppointments().then((result) => {
       setData(result);
+
+      // Extract user IDs from the appointments and fetch user data
+      const userIds = result.map((appointment) => appointment.user);
+      fetchUserData(userIds).then((userData) => {
+        const userNamesMap = {};
+        userData.forEach((user) => {
+          // Assuming the user data contains "firstName" and "lastName" properties
+          userNamesMap[user._id] = `${user.firstName} ${user.lastName}`;
+        });
+        setUserNames(userNamesMap);
+      });
     });
   }, []);
 
@@ -65,11 +86,10 @@ const TestAppointmentsTable = () => {
         <TableBody>
           {data.map((appointment) => (
             <TableRow key={appointment._id}>
-              <TableCell>{appointment.user}</TableCell>
+              <TableCell>{userNames[appointment.user]}</TableCell>
               <TableCell>{appointment.accessorId}</TableCell>
               <TableCell>{appointment.location}</TableCell>
-              <TableCell>{appointment.location}</TableCell>
-             
+              <TableCell>{appointment.date}</TableCell>
             </TableRow>
           ))}
         </TableBody>

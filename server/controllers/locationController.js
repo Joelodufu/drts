@@ -2,10 +2,10 @@ const mysql = require("mysql2");
 
 // Assuming you have a configured MySQL connection
 const connection = mysql.createConnection({
-  host: process.env.DEV_DB_HOST,
-  user: process.env.DEV_DB_USER_NAME,
-  password: process.env.DEV_DB_PASSWORD,
-  database: process.env.DEV_DB_NAME,
+  host: "sql12.freesqldatabase.com",
+  user: "sql12662397",
+  password: "emr87xH41j",
+  database: "sql12662397",
 });
 
 // Connect to MySQL
@@ -22,8 +22,8 @@ connection.connect((err) => {
       id INT AUTO_INCREMENT PRIMARY KEY,
       name VARCHAR(255),
       address VARCHAR(255),
-      createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-      updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+
     )
   `;
 
@@ -65,25 +65,18 @@ const getLocation = (req, res) => {
   });
 };
 
-
 // Create location
 const createLocation = (req, res) => {
-  const { name, address } =
-    req.body;
-  const query =
-    "INSERT INTO location (name, address) VALUES (?, ?)";
+  const { name, address } = req.body;
+  const query = "INSERT INTO location (name, address) VALUES (?, ?)";
 
-  connection.query(
-    query,
-    [name, address],
-    (error, results) => {
-      if (error) {
-        res.status(400).json({ error: error.message });
-      } else {
-        res.status(200).json({ id: results.insertId });
-      }
+  connection.query(query, [name, address], (error, results) => {
+    if (error) {
+      res.status(400).json({ error: error.message });
+    } else {
+      res.status(200).json({ id: results.insertId });
     }
-  );
+  });
 };
 
 // Create Batch
@@ -91,24 +84,18 @@ const creatBatch = (req, res) => {
   const { locations } = req.body;
   const allLocation = [];
 
-  locations.forEach(
-    ({ name, address }) => {
-      const query =
-        "INSERT INTO locations (name, address) VALUES (?, ?, ?, ?, ?, ?, ?)";
+  locations.forEach(({ name, address }) => {
+    const query =
+      "INSERT INTO locations (name, address) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-      connection.query(
-        query,
-        [name, address],
-        (error, results) => {
-          if (error) {
-            res.status(400).json({ error: error.message });
-          } else {
-            allLocation.push({ id: results.insertId });
-          }
-        }
-      );
-    }
-  );
+    connection.query(query, [name, address], (error, results) => {
+      if (error) {
+        res.status(400).json({ error: error.message });
+      } else {
+        allLocation.push({ id: results.insertId });
+      }
+    });
+  });
 
   res.status(200).json(allLocation);
 };
@@ -116,24 +103,18 @@ const creatBatch = (req, res) => {
 // Update location
 const updateLocation = (req, res) => {
   const { id } = req.params;
-  const { name, address } =
-    req.body;
-  const query =
-    "UPDATE location SET name=?, address=? WHERE id=?";
+  const { name, address } = req.body;
+  const query = "UPDATE location SET name=?, address=? WHERE id=?";
 
-  connection.query(
-    query,
-    [name, address, id],
-    (error, results) => {
-      if (error) {
-        res.status(400).json({ error: error.message });
-      } else if (results.affectedRows === 0) {
-        res.status(404).json({ error: "No such location" });
-      } else {
-        res.status(200).json({ message: "Location updated successfully" });
-      }
+  connection.query(query, [name, address, id], (error, results) => {
+    if (error) {
+      res.status(400).json({ error: error.message });
+    } else if (results.affectedRows === 0) {
+      res.status(404).json({ error: "No such location" });
+    } else {
+      res.status(200).json({ message: "Location updated successfully" });
     }
-  );
+  });
 };
 
 // Delete location

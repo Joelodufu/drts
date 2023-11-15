@@ -22,20 +22,8 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-// Sample user data
-const users = [
-  {
-    _id: "6540be5f975d22995184d356",
-    firstName: "Joel",
-    lastName: "Odufu",
-    email: "joelekowoicho@gmail.com",
-    role: "user",
-  },
-  // Add more users as needed
-];
-
 function UserTable() {
-  const [userList, setUserList] = useState(users);
+  const [userList, setUserList] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
   const [openDialog, setOpenDialog] = useState(false);
 
@@ -56,9 +44,11 @@ function UserTable() {
   };
 
   useEffect(() => {
-    // Fetch users when the component is mounted
-    // You can replace this with your actual user fetching logic
-    setUserList(users);
+    // Fetch users from the API endpoint
+    fetch("http://localhost:5000/api/users")
+      .then((response) => response.json())
+      .then((data) => setUserList(data))
+      .catch((error) => console.error("Error fetching users: ", error));
   }, []);
 
   const handleEditClick = (user) => {
@@ -98,7 +88,13 @@ function UserTable() {
   const handleConfirmDelete = (user) => {
     // Send a DELETE request to delete the selected user on the server
     // Implement the DELETE request logic here
-
+    fetch(`http://localhost:5000/api/users/${user._id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json", // Set the appropriate content type
+        // Add any additional headers if needed
+      },
+    });
     // After successfully deleting the user on the server, update the local state
     setUserList((prevUsers) =>
       prevUsers.filter((u) => u._id !== deleteTarget._id)
