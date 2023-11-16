@@ -2,9 +2,16 @@ import React from "react";
 import NavBar from "./../../components/NavBar";
 import { Box, Button } from "@mui/material";
 import Typography from "@mui/material/Typography";
+import { useNavigate } from "react-router-dom";
 
 function Profile() {
   const user = JSON.parse(localStorage.getItem("user"));
+  const navigate = useNavigate();
+
+  const logoutNow = () => {
+    localStorage.removeItem("user");
+    navigate("/signin");
+  };
 
   return (
     <>
@@ -17,6 +24,9 @@ function Profile() {
           </span>
           <span>
             <Typography> {user.lastName}</Typography>
+            <Button variant="contained" color="primary" onClick={logoutNow}>
+              Logout
+            </Button>
           </span>
         </Box>
       </Box>

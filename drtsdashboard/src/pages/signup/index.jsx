@@ -1,3 +1,4 @@
+// SignUp.jsx
 import React, { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -12,40 +13,51 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import "./style.css";
-import { useNavigate } from "react-router-dom";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
-import { submitSignupForm } from "./signupServices"; // Import your service
+import { useNavigate } from "react-router-dom";
+import { submitSignupForm } from "./signupServices";
 
 const defaultTheme = createTheme();
 
 export default function SignUp() {
   const [success, setSuccess] = useState(false);
+  const [formFilled, setFormFilled] = useState(true);
   const [formData, setFormData] = useState({});
+  const [errorMessage, setErrorMessage] = useState(""); // New state for error message
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const form = event.target;
     const data = new FormData(form);
-    const userData = {
-      firstName: data.get("firstName"),
-      lastName: data.get("lastName"),
-      email: data.get("email"),
-      password: data.get("password"),
-    };
 
-    const isSuccess = await submitSignupForm(userData);
+    if (
+      data.get("firstName") &&
+      data.get("lastName") &&
+      data.get("email") &&
+      data.get("password")
+    ) {
+      const userData = {
+        firstName: data.get("firstName"),
+        lastName: data.get("lastName"),
+        email: data.get("email"),
+        password: data.get("password"),
+      };
 
-    if (isSuccess) {
-      // Clear the form fields
-      form.reset();
+      const result = await submitSignupForm(userData);
 
-      setFormData(userData);
-      setSuccess(true);
-      // Redirect to the "/signin" route after a successful registration.
-      navigate("/signin");
+      if (result.success) {
+        form.reset();
+        setFormData(userData);
+        setSuccess(true);
+        navigate("/signin");
+      } else {
+        setFormFilled(false);
+        setErrorMessage(result.error); // Set the error message state
+      }
+    } else {
+      setFormFilled(false);
     }
   };
 
@@ -130,6 +142,11 @@ export default function SignUp() {
                 />
               </Grid>
             </Grid>
+            {!formFilled && (
+              <Typography variant="body2" color="error">
+                {errorMessage || "Please fill out the form."}
+              </Typography>
+            )}
             <Button
               type="submit"
               fullWidth
@@ -154,7 +171,6 @@ export default function SignUp() {
           </Box>
         </Box>
       </Container>
-      {/* Success Popup */}
       <Snackbar open={success} autoHideDuration={6000} onClose={handleClose}>
         <MuiAlert
           elevation={6}

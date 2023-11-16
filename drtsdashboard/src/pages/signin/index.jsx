@@ -18,24 +18,30 @@ const defaultTheme = createTheme();
 
 export default function SignIn() {
   const [loginSuccess, setLoginSuccess] = useState(false);
+  const [formFilled, setFormFilled] = useState(true); // State to track form validation
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
-    const result = await submitSignInForm({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    // Check if both email and password are filled
+    if (data.get("email") && data.get("password")) {
+      const result = await submitSignInForm({
+        email: data.get("email"),
+        password: data.get("password"),
+      });
 
-    if (result) {
-      setLoginSuccess(true);
+      if (result) {
+        setLoginSuccess(true);
+      } else {
+        // Handle login failure, show an error message, etc.
+      }
     } else {
-      // Handle login failure, show an error message, etc.
+      setFormFilled(false); // Set formFilled to false if the form is not filled
     }
   };
-  console.log(user);
+
   const navigate = useNavigate();
- 
+
   if (loginSuccess) {
     navigate("/");
     window.location.reload();
@@ -85,6 +91,11 @@ export default function SignIn() {
               id="password"
               autoComplete="current-password"
             />
+            {!formFilled && (
+              <Typography variant="body2" color="error">
+                Please fill out the form.
+              </Typography>
+            )}
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
