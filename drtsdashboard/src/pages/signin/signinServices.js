@@ -1,7 +1,7 @@
 export async function submitSignInForm(data) {
   try {
     const response = await fetch(
-      "https://drts-mysql-server.onrender.com/api/auth/login",
+      "http://localhost:5000/api/auth/login",
       {
         method: "POST",
         headers: {
@@ -20,7 +20,7 @@ export async function submitSignInForm(data) {
 
       // Fetch user details using the token
       const userResponse = await fetch(
-        "https://drts-mysql-server.onrender.com/api/auth/user-details",
+        "http://localhost:5000/api/auth/user-details",
         {
           method: "GET",
           headers: {

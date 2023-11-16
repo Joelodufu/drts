@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://drts-server.onrender.com/api";
+const API_BASE_URL = "http://localhost:5000/api";
 
 // Function to fetch new applications data
 export const fetchNewApplications = async () => {

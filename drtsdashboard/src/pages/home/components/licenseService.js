@@ -36,7 +36,7 @@ export const postLicenseApplication = async (licenseData) => {
 
     const jsonData = JSON.stringify(requestData);
     console.log(jsonData);
-    const response = await fetch(`https://drts-server.onrender.com/api/license`, {
+    const response = await fetch(`http://localhost:5000/api/license`, {
       method: "POST",
       body: jsonData,
       headers: {
